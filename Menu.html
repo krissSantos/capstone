@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="favicon.ico">
+    <link rel="stylesheet" href="css/cssfooter.css">
+    <link rel="stylesheet" href="css/body.css">
+    <link rel="stylesheet" href="css/styleforcard.css">
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+  />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="store.js" async></script>
+  <script>
+      function product(){
+       let a = document.getElementsByClassName("name").innerHTML;
+       let b = document.getElementById("price").innerHTML;
+       let c = document.getElementById("product")
+       let d = document.getElementById("output");
+       let e = document.getElementById("name1");
+       let f = document.getElementById("price1");
+       let h = document.getElementById("modalimg")
+       e.innerHTML = a;
+       f.innerHTML = b
+       h.innerHTML =  "<img src='" + c.getAttribute("src")  + "' style='width: 100%'" + "/>"
+     }
+ </script>
+<title>cakes</title>
+</head>
+<body>
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Cake</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Bread and pastries</button>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+      <div class="container">
+        <div class="row">
+            <div class="col-lg-6 text-dark">
+                <h1>Cakes</h1>
+                <p>Try our best selling cakes in our store. Enjoy!</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container pt-4" style="background-color: white;">
+      <div class="row">
+        <div class="col-lg-4 text-center">
+            <div class="card">
+              <div class="card-bg">
+                <img id="product" src="images/p1_blueberry.jpg" style="height: 400px;">
+              </div>
+              <div class="card-context">
+                <div class="dark-bg"></div>
+                <h2 class="name">Blueberry Cheesecake</h2>
+                <p id="price">Php 1499.00</p>
+              </div>
+            </div>
+            <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#modal1"
+            onclick="product()"
+          >
+            Launch demo modal
+          </button>
+          <!-- Modal -->
+      
+          <div class="table-responsive">
+            <div
+              class="modal fade"
+              id="modal1"
+              tabindex="-1"
+              aria-labelledby="exampleModalLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Bakeshop</h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body" id="output">
+                    <div class="container">
+                      <div class="row">
+                          <div class="col-lg-6" id="modalimg" >
+                           
+                          </div>
+                          <div class="col-lg-6">
+                              <p style="font-size: 20px;"><b id="name1"></b></p>
+                              <p id="price1"></p>
+                              <label for="number" id="number-label">Quantity</label>
+                              <input id="number" type="number" name="number" required  min="0" max="3" required></input>
+                          </div>
+                      </div>
+                  </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      Close
+                    </button>
+                    <button type="button" class="btn btn-primary">
+                      Save changes
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 text-center">
+          <div class="card">
+            <div class="card-bg">
+              <img src="images/p2_Redvelvet_cake.jpg" style="height: 400px">
+            </div>
+            <div class="card-context">
+              <div class="dark-bg"></div>
+              <h2 id="name">Redvelvet Cake</h2>
+              <p id="price">Php 1299.00</p>
+              
+            </div>
+          </div>
+          <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#modal1"
+          onclick="Hello()"
+        >
+          Launch demo modal
+        </button>
+        <!-- Modal -->
+        </div>
+        <div class="col-lg-4 text-center">
+          <div class="card">
+            <div class="card-bg">
+              <img src="images/p5_strawberryshortcake.jpg" style="height: 400px">
+            </div>
+            <div class="card-context">
+              <div class="dark-bg"></div>
+              <h2>Strawberry Shortcake</h2>
+              <p>Php 1699.00</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container pt-4" style="background-color: white;">
+      <div class="row">
+        <div class="col-lg-4 text-center">
+            <div class="card">
+              <div class="card-bg">
+                <img src="images/p6_mocha_cake.jpg" style="height: 400px">
+              </div>
+              <div class="card-context">
+                <div class="dark-bg"></div>
+                <h2>Mocha Cake</h2>
+                <p>Php 1399.00</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 text-center">
+          <div class="card">
+            <div class="card-bg">
+              <img src="images/p3_triple_chocolate_cake.jpg" style="height: 400px">
+            </div>
+            <div class="card-context">
+              <div class="dark-bg"></div>
+              <h2>Triple chocolate Cake</h2>
+              <p>Php 1199.00</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 text-center">
+          <div class="card">
+            <div class="card-bg">
+              <img src="images/p9_sans_rival.jpg" style="height: 400px">
+            </div>
+            <div class="card-context">
+              <div class="dark-bg"></div>
+              <h2>Sans Rival</h2>
+              <p>Php 1999.00</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container pt-4 pb-3" style="background-color: white;">
+      <div class="row">
+        <div class="col-lg-4 text-center">
+            <div class="card">
+              <div class="card-bg">
+                <img src="images/p4_carrotcake" style="height: 400px">
+              </div>
+              <div class="card-context">
+                <div class="dark-bg"></div>
+                <h2>Carrot Cake</h2>
+                <p>Php 999.00</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 text-center">
+          <div class="card">
+            <div class="card-bg">
+              <img src="images/p8_brazo_de_mercedes.jpg" style="height: 400px">
+            </div>
+            <div class="card-context">
+              <div class="dark-bg"></div>
+              <h2>Brazo De Mercedes</h2>
+              <p>Php 499.00</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 text-center">
+          <div class="card">
+            <div class="card-bg">
+              <img src="images/p14_ube_macapuno.jpg" style="height: 400px">
+            </div>
+            <div class="card-context">
+              <div class="dark-bg"></div>
+              <h2>Ube Macapuno Cake</h2>
+              <p>Php 1899.00</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+          <div class="bt-btn pt-5 pb-3">
+            <button type="submit" class="btn" style="font-size: xx-large; background-color: hsl(210, 14%, 53%, 0.5); border: none; width: 100%;text-align: center;"><a href="order.html" style="color: black; text-decoration: none; ">ORDER NOW</a></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+      <div class="container" >
+        <div class="row">
+            <div class="col-lg-6 text-dark">
+                <h1>Bread and Pastries</h1>
+                <p>Try our freshly cooked bread and pastries. Enjoy!</p>
+            </div>
+        </div>
+    </div>
+    <div class="container pt-4" style="background-color: white;">
+        <div class="row">
+          <div class="col-lg-4 text-center">
+              <div class="card">
+                <div class="card-bg">
+                  <img src="images/p12_croissant.webp" style="height: 400px">
+                </div>
+                <div class="card-context">
+                  <div class="dark-bg"></div>
+                  <h2>Filled Croissant</h2>
+                  <p>-Php 90 box of 6 <br>
+                    -Php 160 box of 12
+                </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 text-center">
+            <div class="card">
+              <div class="card-bg">
+                <img src="images/p7_macaroon.jpg" style="height: 400px">
+              </div>
+              <div class="card-context">
+                <div class="dark-bg"></div>
+                <h2>Macaroons</h2>
+                <p>-Php 150 box of 6 <br>
+                    -Php 280 box of 12
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 text-center">
+            <div class="card">
+              <div class="card-bg">
+                <img src="images/p11_glazed donut.jpg" style="height: 400px; margin-right: 0;">
+              </div>
+              <div class="card-context">
+                <div class="dark-bg"></div>
+                <h2>Glazed Donuts</h2>
+                <p>-Php 120 box of 6<br>
+                    -Php 230 box of 12
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container pt-4" style="background-color: white;">
+        <div class="row">
+          <div class="col-lg-4 text-center">
+              <div class="card">
+                <div class="card-bg">
+                  <img src="images/bread.jpg" style="height: 400px">
+                </div>
+                <div class="card-context">
+                  <div class="dark-bg"></div>
+                  <h2>Baguette</h2>
+                  <p>-Php 70/pc</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 text-center pb-5">
+            <div class="card">
+              <div class="card-bg">
+                <img src="images/p13_chocolate chip_muffins.webp" style="height: 400px">
+              </div>
+              <div class="card-context">
+                <div class="dark-bg"></div>
+                <h2>Premium Muffins</h2>
+                <p>-Php 150 box of 6<br>
+                    -Php 280 box of 12
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 text-center">
+            <div class="card">
+              <div class="card-bg">
+                <img src="images/p13 cupcake.jpg" style="height: 400px; margin-right: 0;">
+              </div>
+              <div class="card-context">
+                <div class="dark-bg"></div>
+                <h2>Assorted Cupcakes</h2>
+                <p>-Php 140 box of 6<br>
+                    -Php 260 box of 12
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+          <div class="bt-btn pt-5 pb-3">
+            <button type="submit" class="btn" style="font-size: xx-large; background-color: hsl(210, 14%, 53%, 0.5); border: none; width: 100%;text-align: center;"><a href="order.html" style="color: black; text-decoration: none; ">ORDER NOW</a></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</body>
+</html>

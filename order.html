@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="favicon.ico">
+    <link rel="stylesheet" href="css/cssfooter.css">
+    <link rel="stylesheet" href="css/body.css">
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+  />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+<title>Order</title>
+</head>
+<body>
+
+<!-- //Navigation Bar -->
+
+  <nav class="navbar navbar-expand-lg bg-*" style="cursor: pointer;">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><img src="images/Icon.png" width="100%" height="40" alt=""></a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbar-supported-content"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbar-supported-content">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="index.html" style="color:black">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbar-dropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              style="color:black"
+              >Menu</a
+            >
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="cake.html" style="color:black;">Cakes</a></li>
+              <li><a class="dropdown-item" href="bnp.html" style="color:black">Bread and Pastries</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="order.html" style="color:black">Order</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html" style="color:black">Contact</a>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <input class="form-control" type="search" placeholder="Searching for?">
+          <button class="btn" type="submit" style="background-color: hsl(210, 14%, 53%, 0.5)">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+  <div class="container" >
+      <div class="row">
+          <div class="col-lg-6 text-dark">
+              <h1>Order Form</h1>
+          </div>
+      </div>
+  </div>
+  <div class="container">
+    <div class="div">
+      <div class="col-lg-12">
+        <h1 class="text-center">Cakes</h1>
+      </div>
+    </div>
+  </div>
+
+<!-- //Product Cake -->
+
+  <div class="container pt-4" style="background-color: white;">
+      <div class="row">
+        <div class="col-lg-3 text-center">
+          <img
+            src="images/p1_blueberry.jpg"
+            style="width: 100%; height: 300px"
+            class="img-thumbnail"
+          />
+          <div class="caption">
+            <p>Blueberry  Cheesecake<br>Php 1499.00</p>
+            <label for="number" id="number-label" class="pb-4">Quantity</label>
+            <input id="number" type="number" name="number" required  min="0" max="3" required></input>
+            <button class="btn" style="background-color: hsl(210, 14%, 53%, 0.5)" type="submit">Add to Cart</button>
+          </div>
+        </div>
+        <div class="col-lg-3 text-center">
+          <img
+            src="images/p2_Redvelvet_cake.jpg"
+            style="width: 100%; height: 300px"
+            class="img-thumbnail"
+          />
+          <div class="caption">
+            <p>Redvelvet Cake<br>Php 1299.00</p>
+            <label for="number" id="number-label" class="pb-4">Quantity</label>
+            <input id="number" type="number" name="number" required  min="0" max="3" required></input>
+            <button class="btn" style="background-color: hsl(210, 14%, 53%, 0.5)" type="submit">Add to Cart</button>
+          </div>
+        </div>
+        <div class="col-lg-3 text-center">
+          <img
+            src="images/p5_strawberryshortcake.jpg"
+            style="width: 100%; height: 300px"
+            class="img-thumbnail"
+          />
+          <div class="caption">
+            <p>Strawberry Shortcake<br>Php 1499.00</p>
+            <label for="number" id="number-label" class="pb-4">Quantity</label>
+            <input id="number" type="number" name="number" required  min="0" max="3" required></input>
+            <button class="btn" style="background-color: hsl(210, 14%, 53%, 0.5)" type="submit">Add to Cart</button>
+          </div>
+        </div>
+        <div class="col-lg-3 text-center">
+          <img
+            src="images/p6_mocha_cake.jpg"
+            style="width: 100%; height: 300px"
+            class="img-thumbnail"
+          />
+          <div class="caption">
+            <p>Mocha Cake<br>Php 1399.00</p>
+            <label for="number" id="number-label" class="pb-4">Quantity</label>
+            <input id="number" type="number" name="number" required  min="0" max="3" required></input>
+            <button class="btn" style="background-color: hsl(210, 14%, 53%, 0.5)" type="submit">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="container pt-4" style="background-color: white;">
+      <div class="row">
+        <div class="col-lg-3 text-center">
+          <img
+            src="images/p3_triple_chocolate_cake.jpg"
+            style="width: 100%; height: 300px"
+            class="img-thumbnail"
+          />
+          <div class="caption">
+            <p>Triple Chocolate Cake<br>Php 1199.00</p>
+            <label for="number" id="number-label" class="pb-4">Quantity</label>
+            <input id="number" type="number" name="number" required  min="0" max="3" required></input>
+            <button class="btn" style="background-color: hsl(210, 14%, 53%, 0.5)" type="submit">Add to Cart</button>
+          </div>
+        </div>
+        <div class="col-lg-3 text-center">
+          <img
+            src="images/p9_sans_rival.jpg"
+            style="width: 100%; height: 300px"
+            class="img-thumbnail"
+          />
+          <div class="caption">
+            <p>Sans Rival<br>Php 1999.00</p>
+            <label for="number" id="number-label" class="pb-4">Quantity</label>
+            <input id="number" type="number" name="number" required  min="0" max="3" required></input>
+            <button class="btn" style="background-color: hsl(210, 14%, 53%, 0.5)" type="submit">Add to Cart</button>
+          </div>
+        </div>
+        <div class="col-lg-3 text-center">
+          <img
+            src="images/p4_carrotcake"
+            style="width: 100%; height: 300px"
+            class="img-thumbnail"
+          />
+          <div class="caption">
+            <p>Carrot Cake<br>Php 999.00</p>
+            <label for="number" id="number-label" class="pb-4">Quantity</label>
+            <input id="number" type="number" name="number" required  min="0" max="3" required></input>
+            <button class="btn" style="background-color: hsl(210, 14%, 53%, 0.5)" type="submit">Add to Cart</button>
+          </div>
+        </div>
+        <div class="col-lg-3 text-center">
+          <img
+            src="images/p8_brazo_de_mercedes.jpg"
+            style="width: 100%; height: 300px"
+            class="img-thumbnail"
+          />
+          <div class="caption">
+            <p>Brazeo de Mercedes<br>Php 499.00</p>
+            <label for="number" id="number-label" class="pb-4">Quantity</label>
+            <input id="number" type="number" name="number" required  min="0" max="3" required></input>
+            <button class="btn" style="background-color: hsl(210, 14%, 53%, 0.5)" type="submit">Add to Cart</button>
+          </div>
+        </div>
+        </div>
+    </div>
+    <div class="container pt-4" style="background-color: white;">
+      <div class="row">
+      <div class="col-lg-3 text-center">
+        <img
+          src="images/p14_ube_macapuno.jpg"
+          style="width: 100%; height: 300px"
+          class="img-thumbnail"
+        />
+        <div class="caption">
+          <p>Ube Macapuno Cake<br>Php 1899.00</p>
+          <label for="number" id="number-label" class="pb-4">Quantity</label>
+          <input id="number" type="number" name="number" required  min="0" max="3" required></input>
+          <button class="btn" style="background-color: hsl(210, 14%, 53%, 0.5)" type="submit">Add to Cart</button>
+        </div>
+      </div>
+      </div>
+    </div>
+
+<!-- //Bread and Pastries Products -->
+
+  <div class="container">
+    <div class="div">
+      <div class="col-lg-12">
+        <h1 class="text-center pt-3 pb-3">Bread and Pastries</h1>
+      </div>
+    </div>
+  </div>
+  <div class="container pt-4" style="background-color: white;">
+      <div class="row">
+        <div class="col-lg-3 text-center">
+          <img
+            src="images/p12_croissant.webp"
+           style="width: 100%; height: 300px"
+            class="img-thumbnail"
+          />
+          <div class="caption">
+            <p>Filled Croissant</p>
+            <div class="pb-3">
+              <input type="radio" name="box" value="6">Php 90 box of 6
+              <br>
+              <input type="radio" name="box" value="12">Php 160 box of 12
+            </div>
+            <button class="btn" style="background-color: hsl(210, 14%, 53%, 0.5)" type="submit">Add to Cart</button>
+          </div>
+        </div>
+        <div class="col-lg-3 text-center">
+          <img
+            src="images/p7_macaroon.jpg"
+           style="width: 100%; height: 300px"
+            class="img-thumbnail"
+          />
+          <div class="caption">
+            <p>Macaroons</p>
+            <div class="pb-3">
+              <input type="radio" name="box" value="6">Php 150 box of 6
+              <br>
+              <input type="radio" name="box" value="12">Php 280 box of 12
+            </div>
+            <button class="btn"  style="background-color: hsl(210, 14%, 53%, 0.5)" type="submit">Add to Cart</button>
+          </div>
+        </div>
+        <div class="col-lg-3 text-center">
+          <img
+            src="images/p11_glazed donut.jpg"
+           style="width: 100%; height: 300px"
+            class="img-thumbnail"
+          />
+          <div class="caption">
+            <p>Glazed Donuts</p>
+            <div class="pb-3">
+              <input type="radio" name="box" value="6">Php 120 box of 6
+              <br>
+              <input type="radio" name="box" value="12">Php 230 box of 12
+            </div>
+            <button class="btn" style="background-color: hsl(210, 14%, 53%, 0.5)" type="submit">Add to Cart</button>
+          </div>
+        </div>
+        <div class="col-lg-3 text-center">
+          <img
+            src="images/bread.jpg"
+           style="width: 100%; height: 300px"
+            class="img-thumbnail"
+          />
+          <div class="caption">
+            <p>Bread<br>
+            </p>
+            <p class="pt-4">Php 70.00/pc</p>
+          </div>
+          <button class="btn" style="background-color: hsl(210, 14%, 53%, 0.5)" type="submit">Add to Cart</button>
+        </div>
+      </div>
+  </div>
+  <div class="container pt-4 pb-4" style="background-color: white;">
+      <div class="row">
+        <div class="col-lg-3 text-center"> 
+          <img src="images/p13_chocolate chip_muffins.webp" 
+          style="width: 100%; height: 300px" 
+          class="img-thumbnail" /> 
+          <div class="caption"> 
+            <p>Premium Muffins</p> 
+            <div class="pb-3"> 
+              <input type="radio" name="box" value="6">Php 150 box of 6 
+              <br> 
+              <input type="radio" name="box" value="12">Php 280 box of 12 
+            </div> 
+            <button class="btn" style="background-color: hsl(210, 14%, 53%, 0.5)" type="submit">Add to Cart</button>
+          </div> 
+        </div>
+        <div class="col-lg-3 text-center"> 
+          <img src="images/p13 cupcake.jpg" 
+          style="width: 100%; height: 300px" 
+          class="img-thumbnail" /> 
+          <div class="caption"> 
+            <p>Assorted Cupcakes</p> 
+            <div class="pb-3"> 
+              <input type="radio" name="box" value="6">Php 140 box of 6 
+              <br> 
+              <input type="radio" name="box" value="12">Php 260 box of 12 
+            </div> 
+            <button class="btn" style="background-color: hsl(210, 14%, 53%, 0.5)" type="submit">Add to Cart</button>
+          </div> 
+        </div>
+      </div>
+  </div>
+  <div class="container">
+      <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+          <div class="bt-btn pt-5 pb-3">
+            <button type="submit" class="btn" style="font-size: xx-large; background-color: hsl(210, 14%, 53%, 0.5); border: none; width: 100%;text-align: center;"><a href="payment.html" style="color: black; text-decoration: none; ">DONE</a></button>
+          </div>
+        </div>
+      </div>
+  </div>
+
+<!-- //footer -->
+
+  <footer class="footer-distributed pt-3" style="margin-top: 20px">
+      <div class="footer-left">
+        <h3 style="font-family: Sun Valley, san-serif;">Katrina's Bakeshop</h3>
+        <p>ⓒ 2022 katrinasbakeshop.com. All rights reserved.</p>
+      </div>
+      <div class="footer-center">
+        <div class="pt-1">
+           <img src="footer_logo/location.png" style="width: 40px; padding-right: 10px; height: 40px;">
+            <p  class="pb-1" style="padding-left: 5px">
+              Molino RD, Greenfield District <br>
+              Bacoor City, Cavite
+            </p>
+        </div>
+        <div>
+          <img src="footer_logo/telephone.png" style="width: 30px;">
+          <p style="padding-left: 15px;">
+          Contact Number<br>
+          (212)456-7890<br>
+          Globe 0916-7006035<br>
+          Smart 0906-9028632</p>
+        </div>
+      </div>
+      <div class="footer-right" style="margin-top: 5px;">
+          <p class="footer-company-about">
+          <span>About the company</span>We are dedicated to serve you with our freshly baked Cakes, Breads and pastries.
+          </p>
+        <div class="footer-icons">
+          <h1 class="fs-5">Follow Us</h1>
+            <a href="https://www.facebook.com/kriss.santos.5">
+                <img src="footer_logo/facebook-logo.png" style="width: 12%; margin-right: 7px;">
+            </a>
+            <a href="https://twitter.com/">
+                <img src="footer_logo/twitter.png" style="width: 7%; margin-right: 13px;">
+            </a>
+            <a href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2F%3F__coig_login%3D1">
+                <img src="footer_logo/IG.png" style="width: 7%;">
+            </a>
+            <a href="https://www.youtube.com/">
+                <img src="footer_logo/yt.png" style="width: 15%">
+            </a>
+        </div>
+      </div>
+  </footer>
+</body>
+</html>

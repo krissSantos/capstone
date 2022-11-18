@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Order;
+use App\Models\OrderProduct;
+use App\Models\Product;
 use DB;
 
 class OrdersController extends Controller
@@ -19,8 +21,8 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        $orders = DB::select('SELECT * FROM orders');
-        return view('orders', compact('orders'));
+        $orders = DB::select('SELECT * FROM `orders` AS o INNER JOIN `order_products` as op ON o.order_ID = op.order_ID;');
+        return view('/orders', compact('orders'));
         
     }
 
@@ -42,6 +44,7 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
+
         $order = new Order;
         $order->order_ID= $order->order_ID;
         $order->first_name = $request->input('fname');
@@ -87,7 +90,7 @@ class OrdersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $class = Classes:: where('class_id', $id) -> update([
+        $order = Order:: where('order_ID', $id) -> update([
             "room"=> $request->input("room"),
             "schedule"=> $request->input("schedule"),
             "subject_id"=> $request->input("subject_id")
@@ -103,8 +106,8 @@ class OrdersController extends Controller
      */
     public function destroy($id)
     {
-        $class = Classes::where("class_id",$id) ->delete();
+        $order = Order::where("order_ID",$id) ->delete();
 
-        return redirect("/classes");
+        return redirect("/orders");
     }
 }

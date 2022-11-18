@@ -13,9 +13,8 @@ use Illuminate\Database\Eloquent\Model;
  * 
  * @property int $product_ID
  * @property string $product_name
- * @property string $price
- * @property int $stock
- * @property string $photo
+ * @property float $price
+ * @property int|null $stock
  *
  * @package App\Models
  */
@@ -26,13 +25,13 @@ class Product extends Model
 	public $timestamps = false;
 
 	protected $casts = [
+		'price' => 'float',
 		'stock' => 'int'
 	];
 
 	protected $fillable = [
 		'product_name',
 		'price',
-		'stock',
-		'photo'
+		'stock'
 	];
 }

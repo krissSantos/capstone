@@ -6,6 +6,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -15,13 +16,12 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $first_name
  * @property string $last_name
  * @property string $address
- * @property int $mobile_number
+ * @property string $mobile_number
  * @property string $email_address
- * @property int $cardholder_name
+ * @property string $cardholder_name
  * @property int $credit_card_number
- * @property string|null $products
- * @property int|null $quantity
- * @property int|null $total
+ * @property Carbon $time_placed
+ * @property string $status
  *
  * @package App\Models
  */
@@ -32,11 +32,11 @@ class Order extends Model
 	public $timestamps = false;
 
 	protected $casts = [
-		'mobile_number' => 'int',
-		'cardholder_name' => 'int',
-		'credit_card_number' => 'int',
-		'quantity' => 'int',
-		'total' => 'int'
+		'credit_card_number' => 'int'
+	];
+
+	protected $dates = [
+		'time_placed'
 	];
 
 	protected $fillable = [
@@ -47,8 +47,7 @@ class Order extends Model
 		'email_address',
 		'cardholder_name',
 		'credit_card_number',
-		'products',
-		'quantity',
-		'total'
+		'time_placed',
+		'status'
 	];
 }

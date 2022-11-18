@@ -61,8 +61,23 @@
       </div>
     </div>
   </nav>
-  <form action="/orders" method="POST">
+  <form action="/Menu/checkout" method="POST">
     @csrf
+        
+        <h1>Total order is ₱{{$total}}</h1>
+        <ul>
+            @for ($i = 0; $i < count($products); $i++)
+                @if ($request -> input('order_' . $products[$i] -> product_ID) > 0)
+                    <li>{{$products[$i] -> product_name}}: {{$request -> input('order_' . $products[$i] -> product_ID)}}</li>
+                @endif
+                <input
+                name="order_{{$products[$i]->product_ID}}"
+                value="{{$request -> input('order_' . $products[$i] -> product_ID)}}"
+                hidden
+                />
+            @endfor
+  
+        </ul>
   <div class="container pt-2" style="background-color: white">
     <div class="row">
         <div class="col-xl-6">
@@ -129,11 +144,9 @@
                    <label for="name" style="color: black;">Cardholder Name:</label>
                    <input type="text" class="form-control" id="name" placeholder="Ex. Kriss D. Santos" name="cname">
                 </div>
-                <div class="col-md-4">
                 <div class="form-outline mb-4">
-                  <label class="form-label" for="form3Example3">Credit card Number:</label>
-                  <input type="number" id="form3Example3" class="form-control" placeholder="Ex. 1111-222-3333" name="cnumber"/>
-                </div>
+                   <label for="name" style="color: black;">Credit card Number:</label>
+                   <input type="number" class="form-control" id="name" placeholder="Ex. Kriss D. Santos" name="cnumber">
                 </div>
                 <div>
                   <label for="start">Expiration Date:</label>
@@ -147,7 +160,7 @@
           <div class="col-lg-4"></div>
           <div class="col-lg-4">
             <div class="bt-btn pt-5 pb-3">
-              <button type="submit" class="btn" style="font-size: xx-large; background-color: hsl(210, 14%, 53%, 0.5); border: none; width: 100%;text-align: center;">CHECK OUT</button>
+            <button type="submit">Place order</button>
             </div>
           </div>
         </div>

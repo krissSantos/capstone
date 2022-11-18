@@ -5,22 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Product;
-use App\Models\Order;
+use App\Models\OrderProduct;
 use DB;
 
-class StatisticsController extends Controller
+class CartController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function showForm()
     {
-        $products = DB::select('SELECT * FROM products');
-        $orders = DB:: select('SELECT COUNT(*) AS total FROM orders');
-        return view('/statistics', compact('products','orders'));
+        $ops = DB::select("SELECT * FROM order_products AS  op RIGHT JOIN products AS p ON op.product_ID = p.product_ID");
+        return view("/cart", compact("ops"));
     }
 
     /**
@@ -30,7 +28,7 @@ class StatisticsController extends Controller
      */
     public function create()
     {
-        //
+        return view('/cart');
     }
 
     /**
@@ -39,10 +37,19 @@ class StatisticsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    
     public function store(Request $request)
     {
-        //
+       $ops = DB::select('SELECT o.order_ID, op.product_ID, quantity FROM `orders` AS o LEFT JOIN `order_products` as op ON o.order_ID = op.order_ID LEFT JOIN `products` AS p ON op.product_ID = p.product_ID;');
+        $ops = new OrderProduct;
+        $ops->order_ID= $ops->order_ID;
+        $ops->product_ID = $request->input('product');
+        $ops->quantity = $request->input('quantity');
+     
+        $ops->save();
+        return redirect("/cart");
     }
+
 
     /**
      * Display the specified resource.

@@ -9,7 +9,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class User
+ * Class CustomersInfo
  * 
  * @property int $customer_ID
  * @property string $first_name
@@ -20,9 +20,9 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @package App\Models
  */
-class User extends Model
+class CustomersInfo extends Model
 {
-	protected $table = 'users';
+	protected $table = 'customers_info';
 	protected $primaryKey = 'customer_ID';
 	public $timestamps = false;
 

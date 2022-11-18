@@ -34,7 +34,7 @@
                     <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password">
                   </div>
                   <div class="mt-3">
-                    <a class="btn btn-block btn-gradient-dark btn-lg font-weight-medium auth-form-btn" href="../../index.html">SIGN IN</a>
+                    <a class="btn btn-block btn-gradient-dark btn-lg font-weight-medium auth-form-btn" href="/">SIGN IN</a>
                   </div>
                   <div class="my-2 d-flex justify-content-between align-items-center">
                     <div class="form-check">
@@ -42,7 +42,7 @@
                         <input type="checkbox" class="form-check-input"> Keep me signed in </label>
                     </div>
                   </div>
-                  <div class="text-center mt-4 font-weight-light"> Don't have an account? <a href="register.html" class="text-dark">Create</a>
+                  <div class="text-center mt-4 font-weight-light"> Don't have an account? <a href="/register" class="text-dark">Create</a>
                   </div>
                 </form>
               </div>

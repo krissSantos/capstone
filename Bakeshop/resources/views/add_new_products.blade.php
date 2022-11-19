@@ -51,7 +51,7 @@
           <ul class="navbar-nav navbar-nav-right">
             <li>
                 <div class="nav-profile-text">
-                  <p class="mb-1 text-black">hi</p>
+                  <p class="mb-1 text-black">ADMIN</p>
                 </div>
             </li>
             <li class="nav-item d-none d-lg-block full-screen-link">
@@ -66,42 +66,7 @@
         </div>
       </nav>
       <div class="container-fluid page-body-wrapper">
-        <nav class="sidebar sidebar-offcanvas" id="sidebar">
-          <ul class="nav">
-            <li class="nav-item nav-profile">
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/admin/statistics">
-                <span class="menu-title">Dashboard</span>
-                <i class="mdi mdi-home menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/admin/orders">
-                <span class="menu-title">Orders</span>
-                <i class="mdi mdi-contacts menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/admin/products">
-                <span class="menu-title">Products</span>
-                <i class="mdi mdi-format-list-bulleted menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="/admin/products/create">
-                <span class="menu-title">Add New Products</span>
-                <i class="mdi mdi-chart-bar menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="pages/icons/mdi.html">
-                  <span class="menu-title">Logout</span>
-                  <i class="mdi mdi-contacts menu-icon"></i>
-                </a>
-              </li>
-          </ul>
-        </nav>
+      @include('layouts/navbar')
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
@@ -112,7 +77,7 @@
               <div class="col-md-8 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <form class="forms-sample" action="/products" method="POST">
+                    <form class="forms-sample" action="/admin/products" method="POST">
                         @csrf
                       <div class="form-group">
                         <label>Product Name</label>

@@ -106,7 +106,7 @@
                           @foreach ($products as $product)
                           <tr>
                               <td>{{$product -> product_name}}</td>
-                              <td>{{$product -> price}}</td>
+                              <td>₱{{$product -> price}}</td>
                               <td><input type="number" name="order_{{$product -> product_ID}}" value="0"></td>
                           </tr>
                           @endforeach

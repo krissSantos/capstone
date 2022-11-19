@@ -21,14 +21,13 @@
             @for ($i = 0; $i < count($products); $i++)
                 @if ($request -> input('order_' . $products[$i] -> product_ID) > 0)
                     <li>{{$products[$i] -> product_name}}: {{$request -> input('order_' . $products[$i] -> product_ID)}}</li>
+                    <li>{{$products[$i]->price * $request -> input('order_' . $products[$i] -> product_ID)}}</li>
                 @endif
-                
                 <input
                 name="order_{{$products[$i]->product_ID}}"
                 value="{{$request -> input('order_' . $products[$i] -> product_ID)}}"
                 hidden
                 />
-            
             @endfor
             <button type="submit">Place order</button>
         </ul>

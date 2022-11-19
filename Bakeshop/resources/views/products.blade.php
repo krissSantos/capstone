@@ -45,7 +45,7 @@ img {
           <ul class="navbar-nav navbar-nav-right">
             <li>
                 <div class="nav-profile-text">
-                  <p class="mb-1 text-black">hi</p>
+                  <p class="mb-1 text-black">ADMIN</p>
                 </div>
             </li>
             <li class="nav-item d-none d-lg-block full-screen-link">
@@ -60,42 +60,7 @@ img {
         </div>
       </nav>
       <div class="container-fluid page-body-wrapper">
-        <nav class="sidebar sidebar-offcanvas" id="sidebar">
-          <ul class="nav">
-            <li class="nav-item nav-profile">
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/admin/statistics">
-                <span class="menu-title">Dashboard</span>
-                <i class="mdi mdi-home menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/admin/orders">
-                <span class="menu-title">Orders</span>
-                <i class="mdi mdi-contacts menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/admin/products">
-                <span class="menu-title">Products</span>
-                <i class="mdi mdi-format-list-bulleted menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="/admin/products/create" >
-                <span class="menu-title">Add New Products</span>
-                <i class="mdi mdi-chart-bar menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="pages/icons/mdi.html">
-                  <span class="menu-title">Logout</span>
-                  <i class="mdi mdi-contacts menu-icon"></i>
-                </a>
-              </li>
-          </ul>
-        </nav>
+      @include('layouts/navbar')
         <div class="main-panel" >
           <div class="content-wrapper">
           <div class="col-lg-12 stretch-card">
@@ -110,7 +75,7 @@ img {
                         <th>Price</th>
                         <th>Stock</th>
                         <th>Photo</th>
-                        <th>Actions</th>
+                        <th style="text-align: center">Actions</th>
                         </tr>
                       </thead>
                       <tbody >
@@ -118,7 +83,7 @@ img {
                       <tr class="table" >
                           <td>{{$product-> product_ID}}</td>
                           <td>{{$product-> product_name}}</td>
-                          <td>{{$product-> price}}</td>
+                          <td>₱{{$product-> price}}</td>
                           <td>{{$product-> stock}}</td>
                         @if ($product -> image)
                         <td><img src="{{url('/images/'. $product -> image)}}" alt="photo" style="height: 100px; width: 100px"/></td>
@@ -126,12 +91,11 @@ img {
                         <td><a href="/products/upload/{{$product -> product_ID}}">Upload photo</a></td>
                         @endif
                           <td>
-                              <a href="/products/{{$product-> product_ID}}"><button type="submit" class="btn btn-outline-info me-2">Show</button></a>
-                              <a href="/products/{{$product-> product_ID}}/edit"><button type="submit" class="btn btn-outline-warning me-2" style="font-size: 15px">Edit</button></a>
-                              <form method="POST" action="/products/{{$product-> product_ID}}">
+                              <a href="products/{{$product-> product_ID}}/edit"><button type="submit" class="btn btn-outline-warning" style="padding: 15px;32px; margin-left: 50px">Edit</button></a>
+                              <form method="POST" action="admin/products/{{$product-> product_ID}}">
                               @csrf
                               @method("DELETE")
-                              <button style="margin-left: 50px" class="btn btn-outline-danger me-2 mt-2" type="submit" >Delete</button>
+                              <button style="margin-left: 50px; padding: 15px;32px;" class="btn btn-outline-danger me-2 mt-2" type="submit" >Delete</button>
                               </form>
                           </td>
                         </tr>

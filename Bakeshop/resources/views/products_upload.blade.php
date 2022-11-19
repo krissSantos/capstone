@@ -95,7 +95,7 @@
               <div class="col-md-8 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                  <form action="admin/products/upload/{{request() -> route('id')}}" method="POST" enctype="multipart/form-data">
+                  <form action="/products/upload/{{request() -> route('id')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                       <div class="form-group">
                         <label>Product ID:</label>

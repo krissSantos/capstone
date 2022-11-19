@@ -19,7 +19,6 @@
         <li>ID: {{Session::get('id')}}</li>
         <li>Email: {{Session::get('email')}}</li>
         <li>Role: {{Session::get('role')}}</li>
-        <li>Student ID: {{Session::get('student_id')}}</li>
     </ul>
     <p><a href="/logout">Logout</a></p>
 </body>

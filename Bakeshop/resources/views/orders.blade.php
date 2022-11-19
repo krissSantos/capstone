@@ -34,7 +34,7 @@
           <ul class="navbar-nav navbar-nav-right">
             <li>
                 <div class="nav-profile-text">
-                  <p class="mb-1 text-black">ADMIN NAME</p>
+                  <p class="mb-1 text-black">ADMIN</p>
                 </div>
             </li>
             <li class="nav-item d-none d-lg-block full-screen-link">
@@ -48,50 +48,13 @@
           </button>
         </div>
       </nav>
-      <!-- partial -->
       <div class="container-fluid page-body-wrapper">
-        <!-- partial:partials/_sidebar.html -->
-        <nav class="sidebar sidebar-offcanvas" id="sidebar">
-          <ul class="nav">
-            <li class="nav-item nav-profile">
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="statistics">
-                <span class="menu-title">Dashboard</span>
-                <i class="mdi mdi-home menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="orders">
-                <span class="menu-title">Orders</span>
-                <i class="mdi mdi-contacts menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="products">
-                <span class="menu-title">Products</span>
-                <i class="mdi mdi-format-list-bulleted menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="products/create">
-                <span class="menu-title">Add New Products</span>
-                <i class="mdi mdi-chart-bar menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="pages/icons/mdi.html">
-                  <span class="menu-title">Logout</span>
-                  <i class="mdi mdi-contacts menu-icon"></i>
-                </a>
-              </li>
-          </ul>
-        </nav>
+        @include('layouts/navbar')
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper" >
           <div class="col-lg-12 stretch-card" >
-                <div class="card" >
+                <div class="card">
                   <div class="card-body" style="width: 100%">
                     <h1 class="card-title">Orders</h1>
                     <table class="table table-bordered">
@@ -99,13 +62,12 @@
                         <tr>
                         <th>Order ID</th>
                         <th>Clients Name</th>
-                        <th>Address</th>
-                        <th>Mobile Number</th>
                         <th>Email Address</th>
-                        <th>Cardholder Name</th>
-                        <th>Credit Card Number</th>
+                        <th>Status</th>
+                        <th>Time</th>
                         <th>Product ID</th>
                         <th>Quantity</th>
+                        <th>Price</th>
                         <th>Actions</th>
                         </tr>
                       </thead>
@@ -114,20 +76,19 @@
                       <tr class="table" >
                           <td>{{$order-> order_ID}}</td>
                           <td>{{$order-> last_name}}, {{$order-> first_name}}</td>
-                          <td>{{$order-> address}}</td>
-                          <td>{{$order-> mobile_number}}</td>
-                          <td>{{$order-> email_address}}</td>
-                          <td>{{$order-> cardholder_name}}</td>
-                          <td>{{$order-> credit_card_number}}</td>
+                          <td>{{$order-> email}}</td>
+                          <td>{{$order->status}}</td>
+                          <td>{{$order-> time_placed}}</td>
                           <td>{{$order-> product_ID}}</td>
                           <td>{{$order-> quantity}}</td>
+                          <td>₱{{$order->price}}</td>
                           <td>
                               <a href="/orders/{{$order-> order_ID}}"><button type="submit" class="btn btn-outline-info me-2">Show</button></a>
                               <a href="/orders/{{$order-> order_ID}}/edit"><button type="submit" class="btn btn-outline-warning me-2" style="font-size: 15px;">Edit</button></a>
                               <form method="POST" action="/orders/{{$order-> order_ID}}">
                               @csrf
                               @method("DELETE")
-                              <button style="margin-left: 50px" class="btn btn-outline-success me-2 mt-2" type="submit" >Complete</button>
+                              <button style="margin-left: 20px" class="btn btn-outline-success me-2 mt-2" type="submit" >Complete</button>
                               </form>
                           </td>
                         </tr>

@@ -48,7 +48,7 @@ class AdminController extends Controller
             Session::pull('role');
             Session::pull('first_name');
             Session::pull('last_name');
-            return redirect('/');
+            return redirect('/login/admin');
         }
     }
 }

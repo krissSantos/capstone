@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Product;
 use App\Models\ProductsPhoto;
+use Session;
 use DB;
 
 
@@ -15,7 +16,7 @@ class ProductsController extends Controller
 
 
     public function showUpload(){
-        return view('products_upload');
+        return view('/products_upload');
     }
 
     public function uploadPhoto($id, Request $request){
@@ -28,7 +29,7 @@ class ProductsController extends Controller
             $product->image = $filename;
         }
         $product->save();
-        return redirect("/products");
+        return redirect("admin/products");
 
     }
     /**
@@ -38,10 +39,14 @@ class ProductsController extends Controller
      */
     public function index()
     {
+        if (Session::get("role") == "admin"){
         $products = DB::select("SELECT * FROM products AS p LEFT JOIN products_photos AS pp ON p.product_ID = pp.product_ID");
-        return view('/products', compact('products'));
+        $stocks = DB::select("SELECT SUM(stock - quantity) AS sq FROM `order_products` AS op INNER JOIN products AS p ON op.product_ID = p.product_ID GROUP BY p.product_ID");
+        return view('/products', compact('products', 'stocks'));
+    }else{
+        return "No permission!";
     }
-
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -60,6 +65,7 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
+        if (Session::get("role") == "admin"){
         $product = new Product;
         $product->product_ID= $product->product_ID;
         $product->product_name = $request->input('pname');
@@ -67,9 +73,11 @@ class ProductsController extends Controller
         $product->stock = $request->input('stock');
         $product->save();
         
-        return redirect("/products");
+        return redirect("admin/products");
+    }else{
+        return "No permission!";
     }
-
+    }
     /**
      * Display the specified resource.
      *
@@ -89,11 +97,15 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
+        if (Session::get("role") == "admin"){
         $products = DB::select("SELECT * FROM products WHERE product_ID = " . $id);
 
         return view('edit_products', compact("products"));
     }
-
+    else{
+        return "No permission!";
+    }
+}
     /**
      * Update the specified resource in storage.
      *
@@ -103,14 +115,17 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (Session::get("role") == "admin"){
         $product = Product:: where('product_ID', $id) -> update([
             "product_name"=> $request->input("pname"),
             "price"=> $request->input("price"),
             "stock"=> $request->input("stock")
         ]);
-        return redirect("/products");
+        return redirect("/admin/products");
+    }else{
+        return "No permission!";
     }
-
+    }
     /**
      * Remove the specified resource from storage.
      *
@@ -119,8 +134,12 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
+        if (Session::get("role") == "admin"){
         $product = Product::where("product_ID",$id) ->delete();
 
-        return redirect("/products");
+        return redirect("admin/products");
+    }else{
+        return "No permission!";
     }
+}
 }

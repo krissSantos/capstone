@@ -25,7 +25,7 @@ class MenuController extends Controller
             for ($i = 0; $i < count($products); $i++){
                 $total += ($products[$i] -> price) * $request -> input('order_' . $products[$i] -> product_ID);
             }
-
+           
             return view('cart', compact('products', 'total', 'request'));
         }
         
@@ -45,6 +45,7 @@ class MenuController extends Controller
                     $op->order_ID = $order -> order_ID;
                     $op->product_id = $products[$i] -> product_ID;
                     $op->quantity = $ordered;
+                    $op->price = $products[$i]->price * $ordered;
                     $op->save();
                 }
             }
@@ -53,5 +54,17 @@ class MenuController extends Controller
         }else{
             return "Not logged in!";
         }
+    }
+    public function showMyOrders(){
+        if (Session::get('id')){
+        $orders = DB::select("SELECT * FROM orders AS o INNER JOIN order_products AS op ON o.order_ID = op.order_ID INNER JOIN products as p ON op.product_ID = p.product_ID WHERE o.status != 'completed' AND o.customer_ID = " . Session::get('customer_ID'));
+
+        $totals = DB::select("SELECT SUM(op.price) AS total FROM orders AS o INNER JOIN order_products AS op ON o.order_ID = op.order_ID INNER JOIN products as p ON op.product_ID = p.product_ID WHERE o.status != 'completed' AND o.customer_ID = ". Session::get('customer_ID'));
+
+        return view('mycart', compact('orders', 'totals'));
+    }
+    else{
+        return "Not logged in!";
+    }
     }
 }

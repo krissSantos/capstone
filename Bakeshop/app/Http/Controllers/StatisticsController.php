@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Product;
 use App\Models\Order;
+use Session;
 use DB;
 
 class StatisticsController extends Controller
@@ -18,9 +19,15 @@ class StatisticsController extends Controller
      */
     public function index()
     {
-        $products = DB::select('SELECT * FROM products');
-        $orders = DB:: select('SELECT COUNT(*) AS total FROM orders');
-        return view('/statistics', compact('products','orders'));
+        if (Session::get("role") == "admin"){
+        $products = DB::select("SELECT * FROM products");
+        $orders = DB:: select("SELECT COUNT(DISTINCT customer_ID) AS ci FROM orders");
+        $totals = DB:: select("SELECT SUM(price) as total FROM orders AS o INNER JOIN order_products AS op ON o.order_ID = op.order_ID");
+
+        return view('/statistics', compact('products','orders', 'totals'));
+        }else{
+            return "No permission!";
+        }
     }
 
     /**

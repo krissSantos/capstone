@@ -4,17 +4,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Purple Admin</title>
-    <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
-    <link rel="stylesheet" href="../../assets/css/style.css">
-    <link rel="shortcut icon" href="../../assets/images/favicon.ico" />
+    <link rel="stylesheet" href="/assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="/assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" />
   </head>
   <body>
     <div class="container-scroller">
     <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
     <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-          <a class="navbar-brand brand-logo" href="index.html"><img src="../../assets/images/Icon.png" alt="logo" /></a>
-          <a class="navbar-brand brand-logo-mini" href="index.html"><img src="../../assets/images/icon1.png" alt="logo" /></a>
+          <a class="navbar-brand brand-logo" href="index.html"><img src="/assets/images/Icon.png" alt="logo" /></a>
+          <a class="navbar-brand brand-logo-mini" href="index.html"><img src="/assets/images/icon1.png" alt="logo" /></a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-stretch">
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -54,7 +54,7 @@
             <li class="nav-item nav-profile">
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/admin/statistics">
+              <a class="nav-link" href="admin/statistics">
                 <span class="menu-title">Dashboard</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
@@ -88,7 +88,7 @@
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title" style="margin-left: 210px">Add New Products </h3>
+              <h3 class="page-title" style="margin-left: 210px">Edit Products </h3>
             </div>
             <div class="row">
                 <div class="col lg 2"></div>
@@ -96,7 +96,7 @@
                 <div class="card">
                   <div class="card-body">
                     @foreach ($products as $product)
-                    <form class="forms-sample" action="/products/{{$product-> product_ID}}" method="POST">
+                    <form class="forms-sample" action="/admin/products" method="POST">
                         @csrf
                         @method('PUT')
                       <div class="form-group">
@@ -122,10 +122,10 @@
         </div>
       </div>
     </div>
-    <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
-    <script src="../../assets/js/off-canvas.js"></script>
-    <script src="../../assets/js/hoverable-collapse.js"></script>
-    <script src="../../assets/js/misc.js"></script>
-    <script src="../../assets/js/file-upload.js"></script>
+    <script src="/assets/vendors/js/vendor.bundle.base.js"></script>
+    <script src="/assets/js/off-canvas.js"></script>
+    <script src="/assets/js/hoverable-collapse.js"></script>
+    <script src="/assets/js/misc.js"></script>
+    <script src="/assets/js/file-upload.js"></script>
   </body>
 </html>

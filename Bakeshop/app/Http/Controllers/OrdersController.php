@@ -9,6 +9,7 @@ use App\Models\Order;
 use App\Models\OrderProduct;
 use App\Models\Product;
 use DB;
+use Session;
 
 class OrdersController extends Controller
 {
@@ -21,11 +22,14 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        $orders = DB::select('SELECT * FROM `orders` AS o INNER JOIN `order_products` as op ON o.order_ID = op.order_ID;');
+        if (Session::get("role") == "admin"){
+        $orders = DB::select("SELECT * FROM `orders` AS O INNER JOIN users AS u ON o.customer_ID = u.customer_ID INNER JOIN order_products AS op ON o.order_ID = op.order_ID;");
         return view('/orders', compact('orders'));
         
+    }else{
+        return "No permission!";
     }
-
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -45,17 +49,6 @@ class OrdersController extends Controller
     public function store(Request $request)
     {
 
-        $order = new Order;
-        $order->order_ID= $order->order_ID;
-        $order->first_name = $request->input('fname');
-        $order->last_name = $request->input('lname');
-        $order->address = $request->input('address');
-        $order->mobile_number = $request->input('number');
-        $order->email_address = $request->input('email');
-        $order->cardholder_name = $request->input('cname');
-        $order->credit_card_number = $request->input('cnumber');
-        $order->save();
-        
         return redirect("/orders");
     }
 
@@ -90,14 +83,17 @@ class OrdersController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (Session::get("role") == "admin"){
         $order = Order:: where('order_ID', $id) -> update([
             "room"=> $request->input("room"),
             "schedule"=> $request->input("schedule"),
             "subject_id"=> $request->input("subject_id")
         ]);
         return redirect("/classes");
+    }else{
+        return "No permission!";
     }
-
+    }
     /**
      * Remove the specified resource from storage.
      *
@@ -106,8 +102,13 @@ class OrdersController extends Controller
      */
     public function destroy($id)
     {
+        if (Session::get("role") == "admin"){
         $order = Order::where("order_ID",$id) ->delete();
 
         return redirect("/orders");
     }
+    else{
+        return "No permission!";
+    }
+}
 }

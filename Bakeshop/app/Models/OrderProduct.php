@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $order_ID
  * @property int $product_ID
  * @property int $quantity
+ * @property int $price
  *
  * @package App\Models
  */
@@ -22,19 +23,19 @@ class OrderProduct extends Model
 {
 	protected $table = 'order_products';
 	protected $primaryKey = 'op_ID';
-	public $incrementing = false;
 	public $timestamps = false;
 
 	protected $casts = [
-		'op_ID' => 'int',
 		'order_ID' => 'int',
 		'product_ID' => 'int',
-		'quantity' => 'int'
+		'quantity' => 'int',
+		'price' => 'int'
 	];
 
 	protected $fillable = [
 		'order_ID',
 		'product_ID',
-		'quantity'
+		'quantity',
+		'price'
 	];
 }

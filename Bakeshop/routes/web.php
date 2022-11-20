@@ -32,6 +32,9 @@ Route::get('/OurMenu', function () {
 Route::get('/Contact', function () {
     return view('contact');
 });
+Route::get('/complete', function () {
+    return view('orderscomplete');
+});
 
 
 Route::get('/login/admin',[AdminController::class,'showLogin']);

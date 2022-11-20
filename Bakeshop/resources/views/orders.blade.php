@@ -84,7 +84,7 @@
                           <td>₱{{$order->price}}</td>
                           <td>
                               <a href="/orders/{{$order-> order_ID}}"><button type="submit" class="btn btn-outline-info me-2">Show</button></a>
-                              <a href="/orders/{{$order-> order_ID}}/edit"><button type="submit" class="btn btn-outline-warning me-2" style="font-size: 15px;">Edit</button></a>
+                              <a href="/admin/orders/{{$order-> order_ID}}/edit"><button type="submit" class="btn btn-outline-warning me-2" style="font-size: 15px;">Edit</button></a>
                               <form method="POST" action="/orders/{{$order-> order_ID}}">
                               @csrf
                               @method("DELETE")

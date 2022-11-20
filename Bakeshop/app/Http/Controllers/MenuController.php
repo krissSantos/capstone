@@ -50,7 +50,7 @@ class MenuController extends Controller
                 }
             }
 
-            return "Order placed";
+            return redirect('/complete');
         }else{
             return "Not logged in!";
         }

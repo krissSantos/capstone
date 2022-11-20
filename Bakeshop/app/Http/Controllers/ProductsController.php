@@ -67,7 +67,7 @@ class ProductsController extends Controller
     {
         if (Session::get("role") == "admin"){
         $product = new Product;
-        $product->product_ID= $product->product_ID;
+        $product->product_ID = $product->product_ID;
         $product->product_name = $request->input('pname');
         $product->price = $request->input('price');
         $product->stock = $request->input('stock');

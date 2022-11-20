@@ -10,7 +10,7 @@
 
 <nav class="navbar navbar-expand-lg bg-*" style="cursor: pointer;">
     <div class="container">
-      <a class="navbar-brand" href="index.html"><img src="images/Icon.png" width="100%" height="40" alt=""></a>
+      <a class="navbar-brand" href="/"><img src="images/Icon.png" width="100%" height="40" alt=""></a>
       <button
         class="navbar-toggler"
         type="button"
@@ -26,6 +26,9 @@
           </li>
           <li class="nav-item">
             <a  class="nav-link"  href="Menu2.html" style="color:black">Menu</a>
+          </li>
+          <li class="nav-item">
+            <a  class="nav-link"  href="/Menu" style="color:black">Order</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" href="Contact" style="color:black">Contact</a>

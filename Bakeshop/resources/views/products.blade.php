@@ -92,7 +92,7 @@ img {
                         @endif
                           <td>
                               <a href="products/{{$product-> product_ID}}/edit"><button type="submit" class="btn btn-outline-warning" style="padding: 15px;32px; margin-left: 50px">Edit</button></a>
-                              <form method="POST" action="admin/products/{{$product-> product_ID}}">
+                              <form method="POST" action="/admin/products/{{$product-> product_ID}}">
                               @csrf
                               @method("DELETE")
                               <button style="margin-left: 50px; padding: 15px;32px;" class="btn btn-outline-danger me-2 mt-2" type="submit" >Delete</button>

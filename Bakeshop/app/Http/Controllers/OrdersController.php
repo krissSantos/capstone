@@ -71,8 +71,15 @@ class OrdersController extends Controller
      */
     public function edit($id)
     {
-    
+        if (Session::get("role") == "admin"){
+        $orders = DB::select("SELECT * FROM orders WHERE order_ID = " . $id);
+
+        return view('/edit_orders', compact("orders"));
     }
+    else{
+        return "No permission!";
+    }
+}
 
     /**
      * Update the specified resource in storage.
@@ -84,12 +91,10 @@ class OrdersController extends Controller
     public function update(Request $request, $id)
     {
         if (Session::get("role") == "admin"){
-        $order = Order:: where('order_ID', $id) -> update([
-            "room"=> $request->input("room"),
-            "schedule"=> $request->input("schedule"),
-            "subject_id"=> $request->input("subject_id")
+        $orders = Order:: where('order_ID', $id) -> update([
+            "status"=> $request->input("status")
         ]);
-        return redirect("/classes");
+        return redirect("/admin/orders");
     }else{
         return "No permission!";
     }

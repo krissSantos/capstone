@@ -45,7 +45,7 @@
                 <div class="card">
                 <h1 class="page-title">Menu</h1>
                   <div class="card-body">
-                  <form action="/Menu" method="POST">
+                  <form action="/menu" method="POST">
                       @csrf
                       <table class="table">
                           <tr>
@@ -56,6 +56,9 @@
                           @foreach ($products as $product)
                           <tr>
                               <td>{{$product -> product_name}}</td>
+                              <td>
+                              <img  src="{{url('/images/')}}/{{$product->image }}" height="100px" width="100px" />
+                              </td>
                               <td>₱{{$product -> price}}</td>
                               <td><input type="number" name="order_{{$product -> product_ID}}" value="0"></td>
                           </tr>

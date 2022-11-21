@@ -46,7 +46,7 @@ class UsersController extends Controller
                 $request->session()->put('first_name', $user -> first_name);
                 $request->session()->put('last_name', $user -> last_name);
 
-                return redirect('/Menu');
+                return redirect('/menu');
             }else{
                 return "Wrong password!";
             }

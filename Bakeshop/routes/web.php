@@ -49,10 +49,10 @@ Route::get('/logout', [UsersController::class, 'logout']);
 Route::post('/login/user',[UsersController::class,'userLogin']);
 Route::get('/login/user',[UsersController::class,'showLogin']);
 
-Route::get('/Menu', [MenuController::class, 'showMenu']);
-Route::post('/Menu', [MenuController::class, 'showCart']);
-Route::post('/Menu/checkout', [MenuController::class, 'checkout']);
-Route::get('/Menu/cart', [MenuController::class, 'showMyOrders']);
+Route::get('/menu', [MenuController::class, 'showMenu']);
+Route::post('/menu', [MenuController::class, 'showCart']);
+Route::post('/menu/checkout', [MenuController::class, 'checkout']);
+Route::get('/menu/mycart', [MenuController::class, 'showMyOrders']);
 
 Route::get('/process_orders', [RecentOrdersController:: class, 'create']);
 Route::post('/process_orders', [RecentOrdersController:: class, 'updateOrders']);
@@ -61,6 +61,6 @@ Route::get('/products/upload/{id}', [ProductsController::class, 'showUpload']);
 Route::post('/products/upload/{id}', [ProductsController::class, 'uploadPhoto']);
 
 
-Route:: resource('/admin/products', ProductsController::class);
-Route:: resource('/admin/statistics', StatisticsController::class);
-Route:: resource('/admin/orders', OrdersController::class);
+Route::resource('/admin/products', ProductsController::class);
+Route::resource('/admin/statistics', StatisticsController::class);
+Route::resource('/admin/orders', OrdersController::class);

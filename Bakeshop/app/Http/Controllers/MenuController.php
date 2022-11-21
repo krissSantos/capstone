@@ -14,9 +14,9 @@ use App\Models\OrderProduct;
 class MenuController extends Controller
 {
     public function showMenu(){
-            $products = DB::select("SELECT * FROM products WHERE stock > 0");
+            $products = DB::select("SELECT * FROM products AS p INNER JOIN products_photos AS pp ON p.product_ID = pp.product_ID WHERE stock > 0");
 
-            return view('Menu', compact('products'));  
+            return view('menu', compact('products'));  
     }
 
     public function showCart(Request $request){
@@ -33,6 +33,13 @@ class MenuController extends Controller
         if (Session::get('id')){
             $order = new Order;
             $order->customer_ID = Session::get('id');
+            $order->full_name = $request-> input ('fname');
+            $order->address = $request-> input ('address');
+            $order->mobile_number = $request-> input ('mobile');
+            $order->email = $request-> input ('email');
+            $order->cardholder_name = $request-> input ('cname');
+            $order->cardholder_number = $request-> input ('cnumber');
+
             $order->save();
 
             $products = DB::select("SELECT * FROM products WHERE stock > 0");
@@ -50,18 +57,35 @@ class MenuController extends Controller
                 }
             }
 
+
+
+            $items_ordered = DB:: select("SELECT product_ID, quantity FROM order_products WHERE order_ID = ". $order->order_ID);
+            $products = DB:: select("SELECT product_ID, stock FROM products");
+            for($i = 0; $i < count ($products); $i++){
+                for($j = 0; $j < count($items_ordered); $j++ ){
+                        if($products[$i]->product_ID == $items_ordered[$j]->product_ID){
+                            $product = Product :: where("product_ID", $products[$i]->product_ID)
+                            ->update([
+                                'stock'=> $products[$i]->stock - $items_ordered[$j]->quantity
+                            ]);
+                        }
+                }
+            }
+
+
             return redirect('/complete');
         }else{
             return "Not logged in!";
         }
     }
+
     public function showMyOrders(){
         if (Session::get('id')){
-        $orders = DB::select("SELECT * FROM orders AS o INNER JOIN order_products AS op ON o.order_ID = op.order_ID INNER JOIN products as p ON op.product_ID = p.product_ID WHERE o.status != 'completed' AND o.customer_ID = " . Session::get('customer_ID'));
+        $orders = DB::select("SELECT * FROM orders AS o INNER JOIN order_products AS op ON o.order_ID = op.order_ID INNER JOIN products as p ON op.product_ID = p.product_ID INNER JOIN products_photos AS pp ON p.product_ID = pp.product_ID WHERE o.status != 'completed' AND o.customer_ID = "  . Session::get('id'));
 
-        $totals = DB::select("SELECT SUM(op.price) AS total FROM orders AS o INNER JOIN order_products AS op ON o.order_ID = op.order_ID INNER JOIN products as p ON op.product_ID = p.product_ID WHERE o.status != 'completed' AND o.customer_ID = ". Session::get('customer_ID'));
+        $totals = DB::select("SELECT SUM(op.price) AS total FROM orders AS o INNER JOIN order_products AS op ON o.order_ID = op.order_ID INNER JOIN products as p ON op.product_ID = p.product_ID WHERE o.status != 'completed' AND o.customer_ID = ". Session::get('id'));
 
-        return view('mycart', compact('orders', 'totals'));
+        return view('/mycart', compact('orders', 'totals'));
     }
     else{
         return "Not logged in!";

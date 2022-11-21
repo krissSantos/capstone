@@ -92,6 +92,7 @@ class OrdersController extends Controller
     {
         if (Session::get("role") == "admin"){
         $orders = Order:: where('order_ID', $id) -> update([
+          
             "status"=> $request->input("status")
         ]);
         return redirect("/admin/orders");

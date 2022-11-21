@@ -15,7 +15,7 @@
 <body>
     <h1>My Order</h1>
     <ul>
-        <li>Order ID: {{$orders[0] -> order_ID}}</li>
+        <li>Customer ID: {{$orders[0] -> customer_ID}}</li>
         <li>Order placed: {{$orders[0] -> time_placed}}</li>
         <li>Status: {{$orders[0] -> status}}</li>
     </ul>
@@ -23,12 +23,15 @@
     <table class="table">
         @foreach ($orders as $order)
             <tr>
-                <td>{{$order -> product_name}}</td>
+            <td>{{$order -> product_name}}</td>
                 <td>₱{{$order -> price}}</td>
                 <td>{{$order -> quantity}}</td>
+                <td>
+                <img  src="{{url('/images/')}}/{{$order->image }}" height="100px" width="100px" />
+                </td>
             </tr>
         @endforeach
     </table>
-    <p>Total: ₱{{$total[0] -> total}}</p>
+    <p>Total: ₱{{$totals[0] -> total}}</p>
 </body>
 </html>

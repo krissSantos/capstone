@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 20, 2022 at 05:31 AM
+-- Generation Time: Nov 21, 2022 at 07:45 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -24,28 +24,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customers_info`
---
-
-CREATE TABLE `customers_info` (
-  `customer_ID` int(11) NOT NULL,
-  `first_name` varchar(50) NOT NULL,
-  `last_name` varchar(50) NOT NULL,
-  `email` varchar(60) NOT NULL,
-  `password` varchar(50) NOT NULL,
-  `role` enum('admin','customer') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `customers_info`
---
-
-INSERT INTO `customers_info` (`customer_ID`, `first_name`, `last_name`, `email`, `password`, `role`) VALUES
-(0, 'admin', 'admin', 'admin@gmail.com', 'admin123', 'admin');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `orders`
 --
 
@@ -53,16 +31,14 @@ CREATE TABLE `orders` (
   `order_ID` int(11) NOT NULL,
   `time_placed` datetime NOT NULL DEFAULT current_timestamp(),
   `status` enum('pending','approved','preparing','delivering','delivered','completed','cancelled') NOT NULL DEFAULT 'pending',
-  `customer_ID` int(11) NOT NULL
+  `customer_ID` int(11) NOT NULL,
+  `full_name` varchar(50) NOT NULL,
+  `address` varchar(50) NOT NULL,
+  `mobile_number` varchar(50) NOT NULL,
+  `email` varchar(60) NOT NULL,
+  `cardholder_name` varchar(50) NOT NULL,
+  `cardholder_number` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `orders`
---
-
-INSERT INTO `orders` (`order_ID`, `time_placed`, `status`, `customer_ID`) VALUES
-(15, '2022-11-19 17:38:34', 'pending', 10),
-(16, '2022-11-19 19:06:39', 'pending', 11);
 
 -- --------------------------------------------------------
 
@@ -77,16 +53,6 @@ CREATE TABLE `order_products` (
   `quantity` int(11) NOT NULL,
   `price` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `order_products`
---
-
-INSERT INTO `order_products` (`op_ID`, `order_ID`, `product_ID`, `quantity`, `price`) VALUES
-(5, 15, 5, 3, 3597),
-(6, 15, 12, 4, 120),
-(7, 16, 9, 2, 3798),
-(8, 16, 11, 3, 150);
 
 -- --------------------------------------------------------
 
@@ -106,22 +72,21 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`product_ID`, `product_name`, `price`, `stock`) VALUES
-(1, 'Blueberry Cheesecake', 1499, 8),
+(1, 'Blueberry Cheesecake', 1499, 7),
 (2, 'Redvelvet Cake', 1299, 10),
 (3, 'Strawberry Shortcake', 1699, 10),
 (4, 'Mocha Cake', 1399, 5),
 (5, 'Triple chocolate Cake', 1199, 10),
 (6, 'Sans Rival', 1999, 10),
 (7, 'Carrot Cake', 999, 10),
-(8, 'Brazo De Mercedes', 699, 10),
-(9, 'Ube Macapuno Cake', 1899, 10),
+(8, 'Brazo De Mercedes', 699, 7),
+(9, 'Ube Macapuno Cake', 1899, 8),
 (10, 'Filled Croissant', 30, 10),
-(11, 'Macarons', 50, 10),
-(12, 'Glazed Donuts', 30, 10),
+(11, 'Macarons', 50, 7),
+(12, 'Glazed Donuts', 30, 8),
 (13, 'Baguette', 90, 10),
 (14, 'Premium Muffins', 65, 10),
-(15, 'Assorted Cupcakes', 30, 10),
-(18, 'chingchang', 30, 3213);
+(15, 'Assorted Cupcakes', 30, 10);
 
 -- --------------------------------------------------------
 
@@ -153,7 +118,8 @@ INSERT INTO `products_photos` (`product_ID`, `image`) VALUES
 (12, '202211161518p11_glazed donut.jpg'),
 (13, '202211161518bread.jpg'),
 (14, '202211161519p13_chocolate chip_muffins.webp'),
-(15, '202211161519p13 cupcake.jpg');
+(15, '202211161519p13 cupcake.jpg'),
+(16, '202211210219gitbash.png');
 
 -- --------------------------------------------------------
 
@@ -208,19 +174,12 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`customer_ID`, `first_name`, `last_name`, `email`, `password`, `role`) VALUES
 (3, 'admin', 'admin', 'admin@gmail.com', '$2y$10$RWJwg6pTsBjJahCjaBeGYOXcclAr91h4vrarHfgBLd78szYHn11Ky', 'admin'),
-(4, 'eugene', 'olarte', 'eugene@gmail.com', '$2y$10$yu1TZFhhbJv8xMPANnbgxuj9AtMOVrgQd0yGKMBqyIiVkWBLDoHwm', 'user'),
 (10, 'kriss', 'santos', 'asdasd@yahoo.com', '$2y$10$r/fiCGNfddqVtHkBtvq66ummo.0K3/OhESNMxPmb1HU8UIXGbCQCm', 'user'),
 (11, 'Patricia', 'santos', 'patricia@gmail.com', '$2y$10$jsamj2TXWNCCGOb9Nlbhiu/0CoAFKCMK0nMXHvlXwn3Tooi65YYJe', 'user');
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `customers_info`
---
-ALTER TABLE `customers_info`
-  ADD PRIMARY KEY (`customer_ID`);
 
 --
 -- Indexes for table `orders`
@@ -252,28 +211,22 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `customers_info`
---
-ALTER TABLE `customers_info`
-  MODIFY `customer_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `order_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `order_products`
 --
 ALTER TABLE `order_products`
-  MODIFY `op_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `op_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `product_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `users`

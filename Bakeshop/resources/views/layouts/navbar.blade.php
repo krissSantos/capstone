@@ -10,7 +10,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="orders">
                 <span class="menu-title">Orders</span>
-                <i class="mdi mdi-contacts menu-icon"></i>
+                <i class="mdi mdi mdi-cart menu-icon"></i>
                 </a>
             </li>
             <li class="nav-item">
@@ -22,11 +22,14 @@
             <li class="nav-item">
             <a class="nav-link" href="products/create">
                 <span class="menu-title">Add New Products</span>
-                <i class="mdi mdi-chart-bar menu-icon"></i>
+                <i class="mdi mdi mdi-database-plus menu-icon"></i>
                 </a>
             </li>
-            <li class="nav-item">
-                    <p><a href="/logout">Logout</a></p>
+            <li class="nav-item mt-3">
+            <a href="/logout" style="text-decoration: none; color: gray">
+                    <span class="menu-title">Logout</span>
+                    <i class="mdi mdi mdi-logout menu-icon" style="padding-left: 120px"></i>
+             </a>
             </li>
         </ul>
 </nav>

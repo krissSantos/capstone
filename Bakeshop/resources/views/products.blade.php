@@ -66,7 +66,7 @@ img {
           <div class="col-lg-12 stretch-card">
                 <div class="card" >
                   <div class="card-body" style="width:100%">
-                    <h1 class="card-title">Orders</h1>
+                    <h1 class="card-title text-center" style="font-size: 30px">Products</h1>
                     <table class="table table-bordered">
                       <thead >
                         <tr>
@@ -91,7 +91,7 @@ img {
                         <td><a href="/products/upload/{{$product -> product_ID}}">Upload photo</a></td>
                         @endif
                           <td>
-                              <a href="products/{{$product-> product_ID}}/edit"><button type="submit" class="btn btn-outline-warning" style="padding: 15px;32px; margin-left: 50px">Edit</button></a>
+                              <a href="/admin/products/{{$product-> product_ID}}/edit"><button type="submit" class="btn btn-outline-warning" style="padding: 15px;32px; margin-left: 50px">Edit</button></a>
                               <form method="POST" action="/admin/products/{{$product-> product_ID}}">
                               @csrf
                               @method("DELETE")

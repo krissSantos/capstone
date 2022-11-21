@@ -40,7 +40,7 @@ class ProductsController extends Controller
     public function index()
     {
         if (Session::get("role") == "admin"){
-        $products = DB::select("SELECT * FROM products AS p LEFT JOIN products_photos AS pp ON p.product_ID = pp.product_ID");
+        $products = DB::select("SELECT p.product_ID, product_name, price, stock, image FROM products AS p LEFT JOIN products_photos AS pp ON p.product_ID = pp.product_ID");
         $stocks = DB::select("SELECT SUM(stock - quantity) AS sq FROM `order_products` AS op INNER JOIN products AS p ON op.product_ID = p.product_ID GROUP BY p.product_ID");
         return view('/products', compact('products', 'stocks'));
     }else{
@@ -116,15 +116,15 @@ class ProductsController extends Controller
     public function update(Request $request, $id)
     {
         if (Session::get("role") == "admin"){
-        $product = Product:: where('product_ID', $id) -> update([
-            "product_name"=> $request->input("pname"),
-            "price"=> $request->input("price"),
-            "stock"=> $request->input("stock")
-        ]);
-        return redirect("/admin/products");
-    }else{
-        return "No permission!";
-    }
+            $product = Product:: where('product_ID', $id) -> update([
+                "product_name"=> $request->input("pname"),
+                "price"=> $request->input("price"),
+                "stock"=> $request->input("stock")
+            ]);
+            return redirect("/admin/products");
+        }else{
+            return "No permission!";
+        }
     }
     /**
      * Remove the specified resource from storage.
@@ -137,7 +137,7 @@ class ProductsController extends Controller
         if (Session::get("role") == "admin"){
         $product = Product::where("product_ID",$id) ->delete();
 
-        return redirect("admin/products");
+        return redirect("/admin/products");
     }else{
         return "No permission!";
     }

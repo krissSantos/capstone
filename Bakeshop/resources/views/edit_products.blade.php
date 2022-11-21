@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Purple Admin</title>
+    <title>Edit Products</title>
     <link rel="stylesheet" href="/assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="/assets/vendors/css/vendor.bundle.base.css">
     <link rel="stylesheet" href="/assets/css/style.css">
@@ -54,7 +54,7 @@
             <li class="nav-item nav-profile">
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="admin/statistics">
+              <a class="nav-link" href="/admin/statistics">
                 <span class="menu-title">Dashboard</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
@@ -62,7 +62,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/admin/orders">
                 <span class="menu-title">Orders</span>
-                <i class="mdi mdi-contacts menu-icon"></i>
+                <i class="mdi mdi mdi-cart menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
@@ -74,15 +74,15 @@
             <li class="nav-item">
               <a class="nav-link" href="/add_new_products">
                 <span class="menu-title">Add New Products</span>
-                <i class="mdi mdi-chart-bar menu-icon"></i>
+                <i class="mdi mdi mdi-database-plus menu-icon"></i>
               </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="pages/icons/mdi.html">
-                  <span class="menu-title">Logout</span>
-                  <i class="mdi mdi-contacts menu-icon"></i>
-                </a>
-              </li>
+            <li class="nav-item mt-3">
+            <a href="/logout" style="text-decoration: none; color: gray">
+                    <span class="menu-title">Logout</span>
+                    <i class="mdi mdi mdi-logout menu-icon" style="padding-left: 120px"></i>
+             </a>
+            </li>
           </ul>
         </nav>
         <div class="main-panel">
@@ -96,7 +96,7 @@
                 <div class="card">
                   <div class="card-body">
                     @foreach ($products as $product)
-                    <form class="forms-sample" action="/admin/products" method="POST">
+                    <form class="forms-sample" action="/admin/products/{{$product->product_ID}}" method="POST">
                         @csrf
                         @method('PUT')
                       <div class="form-group">

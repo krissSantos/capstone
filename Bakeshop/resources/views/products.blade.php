@@ -33,14 +33,6 @@ img {
             <span class="mdi mdi-menu"></span>
           </button>
           <div class="search-field d-none d-md-block">
-            <form class="d-flex align-items-center h-100" action="#">
-              <div class="input-group">
-                <div class="input-group-prepend bg-transparent">
-                  <i class="input-group-text border-0 mdi mdi-magnify"></i>
-                </div>
-                <input type="text" class="form-control bg-transparent border-0" placeholder="Search projects">
-              </div>
-            </form>
           </div>
           <ul class="navbar-nav navbar-nav-right">
             <li>
@@ -64,11 +56,11 @@ img {
         <div class="main-panel" >
           <div class="content-wrapper">
           <div class="col-lg-12 stretch-card">
-                <div class="card" >
+                <div class="card" style="overflow-x:auto; width: 100%">
                   <div class="card-body" style="width:100%">
                     <h1 class="card-title text-center" style="font-size: 30px">Products</h1>
                     <table class="table table-bordered">
-                      <thead >
+                      <thead style="color: #fff; background-color: #212529; border-color: #32383e;">
                         <tr>
                         <th>Product ID</th>
                         <th>Product Name</th>
@@ -88,7 +80,7 @@ img {
                         @if ($product -> image)
                         <td><img src="{{url('/images/'. $product -> image)}}" alt="photo" style="height: 100px; width: 100px"/></td>
                         @else
-                        <td><a href="/products/upload/{{$product -> product_ID}}">Upload photo</a></td>
+                        <td><button type="submit" class="btn btn-outline-dark me-2" style="margin-left: 30px"><a href="/products/upload/{{$product -> product_ID}}" style="text-decoration: none">Upload Photo</a></button></td>
                         @endif
                           <td>
                               <a href="/admin/products/{{$product-> product_ID}}/edit"><button type="submit" class="btn btn-outline-warning" style="padding: 15px;32px; margin-left: 50px">Edit</button></a>
@@ -102,6 +94,9 @@ img {
                         @endforeach
                       </tbody>
                     </table>
+                    </div>
+                    </div>
+                    </div>
                   </div>
                 </div>
               </div>

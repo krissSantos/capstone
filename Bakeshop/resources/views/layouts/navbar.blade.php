@@ -28,7 +28,7 @@
             <li class="nav-item mt-3">
             <a href="/logout" style="text-decoration: none; color: gray">
                     <span class="menu-title">Logout</span>
-                    <i class="mdi mdi mdi-logout menu-icon" style="padding-left: 120px"></i>
+                    <i class="mdi mdi mdi-logout menu-icon"></i>
              </a>
             </li>
         </ul>

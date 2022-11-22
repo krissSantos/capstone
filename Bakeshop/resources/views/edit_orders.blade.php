@@ -88,7 +88,7 @@
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title" style="margin-left: 210px">Edit Orders </h3>
+              <h3 class="page-title" style="margin-left: 210px">Update Status </h3>
             </div>
             <div class="row">
                 <div class="col lg 2"></div>
@@ -108,7 +108,7 @@
                         <option>cancelled</option>
 
                         </select>
-                      <button type="submit" class="btn btn-gradient-dark me-2">Submit</button>
+                      <button type="submit" class="btn btn-gradient-dark me-2 mt-5 " style="float:right !important">Submit</button>
                     </form>
                     @endforeach
                   </div>

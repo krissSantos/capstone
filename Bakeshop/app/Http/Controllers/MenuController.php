@@ -57,8 +57,6 @@ class MenuController extends Controller
                 }
             }
 
-
-
             $items_ordered = DB:: select("SELECT product_ID, quantity FROM order_products WHERE order_ID = ". $order->order_ID);
             $products = DB:: select("SELECT product_ID, stock FROM products");
             for($i = 0; $i < count ($products); $i++){

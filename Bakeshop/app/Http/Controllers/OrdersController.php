@@ -23,7 +23,7 @@ class OrdersController extends Controller
     public function index()
     {
         if (Session::get("role") == "admin"){
-        $orders = DB::select("SELECT * FROM `orders` AS O INNER JOIN users AS u ON o.customer_ID = u.customer_ID INNER JOIN order_products AS op ON o.order_ID = op.order_ID;");
+        $orders = DB::select("SELECT * FROM orders AS O INNER JOIN users AS u ON o.customer_ID = u.customer_ID INNER JOIN order_products AS op ON o.order_ID = op.order_ID;");
         return view('/orders', compact('orders'));
         
     }else{
@@ -60,7 +60,9 @@ class OrdersController extends Controller
      */
     public function show($id)
     {
-   
+        $orders = DB::select("SELECT * FROM orders AS o INNER JOIN users AS u ON o.customer_ID = u.customer_ID INNER JOIN order_products AS op ON o.order_ID = op.order_ID INNER JOIN products AS p ON op.product_ID = p.product_ID WHERE o.order_ID = " . $id);
+
+        return view('show_orders', compact("orders"));
     }
 
     /**
@@ -111,7 +113,7 @@ class OrdersController extends Controller
         if (Session::get("role") == "admin"){
         $order = Order::where("order_ID",$id) ->delete();
 
-        return redirect("/orders");
+        return redirect("/admin/orders");
     }
     else{
         return "No permission!";

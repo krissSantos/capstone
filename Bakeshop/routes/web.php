@@ -9,6 +9,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\ContactController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,14 +30,12 @@ Route::get('/OurMenu', function () {
     return view('clientmenu');
 });
 
-Route::get('/Contact', function () {
-    return view('contact');
-});
+
 Route::get('/complete', function () {
     return view('orderscomplete');
 });
 
-
+Route::resource('/contact', ContactController::class);
 Route::get('/login/admin',[AdminController::class,'showLogin']);
 Route::post('/login/admin',[AdminController::class,'login']);
 Route::get('/admin/logout', [AdminController::class, 'logout']);

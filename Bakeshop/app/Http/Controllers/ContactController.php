@@ -1,16 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Product;
-use App\Models\Order;
+use App\Models\CustomersFeedback;
 use Session;
 use DB;
 
-class StatisticsController extends Controller
+class ContactController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,16 +17,9 @@ class StatisticsController extends Controller
      */
     public function index()
     {
-        if (Session::get("role") == "admin"){
-        $products = DB::select("SELECT * FROM products");
-        $orders = DB:: select("SELECT COUNT(status) AS ci FROM orders WHERE status = 'pending';");
-        $totals = DB:: select("SELECT SUM(price) as total FROM order_products AS op LEFT JOIN orders AS o ON o.order_ID = op.order_ID");
-        $bestsellers = DB::select("SELECT SUM(quantity) AS total , p.product_ID, product_name FROM order_products AS op INNER JOIN products as p ON op.product_ID = p.product_ID GROUP by p.product_ID, product_name ORDER BY total DESC");
-        $bestproducts = DB::select("SELECT SUM(quantity) AS total , p.product_ID, product_name FROM order_products AS op INNER JOIN products as p ON op.product_ID = p.product_ID GROUP by p.product_ID, product_name ORDER BY total DESC LIMIT 1");
-        return view('/statistics', compact('products','orders', 'totals','bestsellers','bestproducts'));
-        }else{
-            return "No permission!";
-        }
+        $feedbacks = DB::select("SELECT * FROM customers_feedback");
+
+        return view('contact', compact('feedbacks'));  
     }
 
     /**
@@ -49,7 +40,13 @@ class StatisticsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $feedbacks = new Customersfeedback;
+        $feedbacks->full_name = $request->input('fname');
+        $feedbacks->email = $request->input('email');
+        $feedbacks->subject = $request->input('cs');
+        $feedbacks->message = $request->input('message');
+        $feedbacks->save();
+        return redirect('/contact');
     }
 
     /**
@@ -83,7 +80,7 @@ class StatisticsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      
     }
 
     /**

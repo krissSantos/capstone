@@ -21,16 +21,6 @@
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
             <span class="mdi mdi-menu"></span>
           </button>
-          <div class="search-field d-none d-md-block">
-            <form class="d-flex align-items-center h-100" action="#">
-              <div class="input-group">
-                <div class="input-group-prepend bg-transparent">
-                  <i class="input-group-text border-0 mdi mdi-magnify"></i>
-                </div>
-                <input type="text" class="form-control bg-transparent border-0" placeholder="Search projects">
-              </div>
-            </form>
-          </div>
           <ul class="navbar-nav navbar-nav-right">
             <li>
                 <div class="nav-profile-text">
@@ -55,19 +45,12 @@
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
-            <div class="page-header">
-              <h3 class="page-title">
-                <span class="page-title-icon bg-gradient-primary text-white me-2">
-                  <i class="mdi mdi-home"></i>
-                </span> Dashboard
-              </h3>
-            </div>
             <div class="row">
               <div class="col-md-4 stretch-card grid-margin">
                 <div class="card bg-gradient-danger card-img-holder text-white">
                   <div class="card-body">
                     <img src="../../assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
-                    <h4 class="font-weight-normal mb-3">Pending Orders <i class="mdi mdi-chart-line mdi-24px float-right"></i>
+                    <h4 class="font-weight-normal mb-3">Pending Orders <i class="mdi  mdi mdi-cart-plus mdi-24px float-right"></i>
                     </h4>
                     @foreach ($orders as $order)
                     <h2 class="mb-5">{{$order->ci}}</h2>
@@ -81,7 +64,9 @@
                     <img src="../../assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
                     <h4 class="font-weight-normal mb-3">Best Seller<i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
                     </h4>
-                    <h2 class="mb-5">COUNT</h2>
+                    @foreach ($bestproducts as $bestproduct)
+                    <h2 class="mb-5">{{$bestproduct->product_name}}</h2>
+                    @endforeach
                   </div>
                 </div>
               </div>
@@ -89,7 +74,7 @@
                 <div class="card bg-gradient-success card-img-holder text-white">
                   <div class="card-body">
                     <img src="../../assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
-                    <h4 class="font-weight-normal mb-3">Total Sales <i class="mdi mdi-diamond mdi-24px float-right"></i>
+                    <h4 class="font-weight-normal mb-3">Total Sales <i class="mdi mdi-chart-line mdi-24px float-right"></i>
                     </h4>
                     @foreach ($totals as $total)
                     <h2 class="mb-5">₱{{$total->total}}</h2>
@@ -114,7 +99,7 @@
                         let data = {
                         labels: labels,
                         datasets: [{
-                            label: 'Entries',
+                            label: 'Stocks',
                             data : [@foreach($products as $product){{$product->stock}},@endforeach],
                             
                                                 backgroundColor: [
@@ -150,6 +135,63 @@
                                 config
                             );
                         </script>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="clearfix">
+                    <h1>Sold Products</h1>
+                    <div>
+                      <canvas id="myChart1"></canvas>
+                    </div>
+
+                    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+                    <script>
+                      const ctx = document.getElementById('myChart1');
+
+                      new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                          labels:[@foreach($bestsellers as $bestseller) "{{$bestseller->product_name}}",
+                        @endforeach],
+                          datasets: [{
+                            label: '# of transactions',
+                            data: [@foreach($bestsellers as $bestseller){{$bestseller->total}},@endforeach],
+                            
+                            backgroundColor: [
+                                        'rgba(255, 99, 132, 0.2)',
+                                        'rgba(54, 162, 235, 0.2)',
+                                        'rgba(255, 206, 86, 0.2)',
+                                        'rgba(75, 192, 192, 0.2)',
+                                        'rgba(153, 102, 255, 0.2)',
+                                        'rgba(255, 159, 64, 0.2)'
+                                    ],
+                                    borderColor: [
+                                        'rgba(255, 99, 132, 1)',
+                                        'rgba(54, 162, 235, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(153, 102, 255, 1)',
+                                        'rgba(255, 159, 64, 1)'
+                                    ],
+                            borderWidth: 1
+                          }]
+                        },
+                        options: {
+                          scales: {
+                            y: {
+                              beginAtZero: true
+                            }
+                          }
+                        }
+                      });
+                    </script>                   
                     </div>
                   </div>
                 </div>

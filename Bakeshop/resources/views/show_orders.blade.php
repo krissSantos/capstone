@@ -41,7 +41,41 @@
         </div>
       </nav>
       <div class="container-fluid page-body-wrapper">
-        @include('layouts/navbar')
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+            <li class="nav-item nav-profile"></li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/statistics">
+                <span class="menu-title">Dashboard</span>
+                <i class="mdi mdi-home menu-icon"></i>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/orders">
+                <span class="menu-title">Orders</span>
+                <i class="mdi mdi mdi-cart menu-icon"></i>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/products">
+                <span class="menu-title">Products</span>
+                <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+                </a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="/admin/products/create">
+                <span class="menu-title">Add New Products</span>
+                <i class="mdi mdi mdi-database-plus menu-icon"></i>
+                </a>
+            </li>
+            <li class="nav-item mt-3">
+            <a href="/logout" style="text-decoration: none; color: gray">
+                    <span class="menu-title">Logout</span>
+                    <i class="mdi mdi mdi-logout menu-icon"></i>
+             </a>
+            </li>
+        </ul>
+        </nav>
         <!-- partial -->
         <div class="main-panel" >
           <div class="content-wrapper" >
@@ -60,10 +94,9 @@
                         <th>Cardholder Name</th>
                         <th>Cardholder Number</th>
                         <th>Time</th>
-                        <th>Product ID</th>
+                        <th>Product name</th>
                         <th>Quantity</th>
                         <th>Price</th>
-                        <th>Actions</th>
                         </tr>
                       </thead>
                       <tbody >
@@ -72,24 +105,22 @@
                           <td>{{$order-> order_ID}}</td>
                           <td>{{$order-> full_name}}</td>
                           <td>{{$order-> email}}</td>
-                          <td><label class="badge badge-info">{{$order-> status}}</label></td>
+                          <td><label class="badge badge-info" style="margin-left: 50px">{{$order-> status}}</label></td>
                           <td>{{$order-> address}}</td>
                           <td>{{$order-> cardholder_name}}</td>
                           <td>{{$order-> cardholder_number}}</td>
                           <td>{{$order-> time_placed}}</td>
-                          <td>{{$order-> product_ID}}</td>
+                          <td>{{$order-> product_name}}</td>
                           <td>{{$order-> quantity}}</td>
                           <td>₱{{$order->price}}</td>
-                          <td>
-                              <a href="/admin/orders/{{$order-> order_ID}}"><button type="submit" class="btn btn-outline-info me-2"  style="margin-left: 20px">Show</button></a>
-                              <form method="POST" action="/admin/orders/{{$order-> order_ID}}">
-                              @csrf
-                              @method("DELETE")
-                              <button style="margin-left: 20px" class="btn btn-outline-success me-2 mt-2" type="submit" >Complete</button>
-                              </form>
-                          </td>
                         </tr>
                         @endforeach
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td> <a href="/admin/orders/{{$order-> order_ID}}/edit"><button type="submit" class="btn btn-outline-warning me-2" style="font-size: 15px;">Update Status</button></a></td>
+                        </tr>
                       </tbody>
                     </table>
                   </div>

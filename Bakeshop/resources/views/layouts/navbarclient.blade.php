@@ -21,11 +21,11 @@
             <a  class="nav-link"  href="/menu" style="color:black">Order</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="Contact" style="color:black">Contact</a>
+            <a class="nav-link" href="/contact" style="color:black">Contact</a>
           </li>
         </ul>
         <form class="d-flex">
-          <button class="btn" type="submit" style="background-color:lightslategray; margin-right: 20px"><a href="/login/user" >Login</a></button>
+        <button class="btn" type="submit" style="background-color:lightslategray; margin-right: 20px"  ><a href="/login/user">Login</a></button>
           <button class="btn" type="submit" style="background-color:lightslategray"><a href="/register">Register</a></button>
         </form>
       </div>

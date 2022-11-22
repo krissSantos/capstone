@@ -60,7 +60,8 @@
     <!-- //Form -->
 
     <div class="col-lg-6">
-        <form>
+        <form action="/contact" method="POST">
+          @csrf
             <div class="form-group">
                     <h1>Katrina's Bakeshop</h1>
                     <p>Progressive and Greenbreeze village corner<br>
@@ -69,24 +70,24 @@
             </div>
             <div class="form-group">
                     <label for="name">Full Name:</label>
-                    <input type="text" class="form-control" id="name" placeholder="Ex. Kriss Santos">
+                    <input type="text" class="form-control" id="name" name="fname" placeholder="Ex. Kriss Santos">
             </div>
             <div class="form-group pt-2">
                     <label for="email">Email:</label>
-                    <input type="email" class="form-control" id="email" placeholder="Ex. kriss.santos@yahoo.com">
+                    <input type="email" class="form-control" id="email" placeholder="Ex. kriss.santos@yahoo.com" name="email">
             </div>
             <div class="form-group col-md-4 pt-2">
               <label for="inputSubject">Subject</label>
-              <select id="inputSubject" class="form-control">
+              <select id="inputSubject" class="form-control" name="cs">
                 <option selected disabled>Please Select</option>
-                <option>Suggestion</option>
-                <option>Followup order</option>
+                <option>Comment/Suggestion</option>
+                <option>Followup</option>
                 <option>Complain</option>
               </select>
             </div>
             <div class="form-group pt-2">
               <label for="exampleFormControlTextarea1">Message:</label>
-              <textarea class="form-control pb-5" id="exampleFormControlTextarea1" rows="3" ></textarea>
+              <textarea class="form-control pb-5" id="exampleFormControlTextarea1" rows="3" name="message"></textarea>
             </div>
             <button type="submit" class="btn" style="background-color:lightslategray; margin-top: 15px; float: right;">Send</button>
             <div class="form-group">

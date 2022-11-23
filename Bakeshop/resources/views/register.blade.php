@@ -35,23 +35,23 @@
                   @csrf
                   <div class="form-group">
                     <label for="username">First Name:</label>
-                    <input type="text" name ="fname"class="form-control form-control-lg" id="exampleInputUsername1" placeholder="First Name">
+                    <input type="text" name ="fname"class="form-control form-control-lg" id="exampleInputUsername1" placeholder="First Name" Required>
                   </div>
                   <div class="form-group">
                     <label for="username">Last name:</label>
-                    <input type="text" name="lname" class="form-control form-control-lg" id="exampleInputUsername1" placeholder="Last Name">
+                    <input type="text" name="lname" class="form-control form-control-lg" id="exampleInputUsername1" placeholder="Last Name" Required>
                   </div>
                   <div class="form-group">
                   <label for="username">Email:</label>
-                    <input type="email" name="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Email">
+                    <input type="email" name="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Email" Required>
                   </div>
                   <div class="form-group">
                   <label for="username">Password:</label>
-                    <input type="password" name="pw" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password">
+                    <input type="password" name="pw" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password" Required>
                   </div>
                   <div class="form-group">
                   <label for="username">Confirm Password:</label>
-                    <input type="password" name="conpw" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Confirm Password">
+                    <input type="password" name="conpw" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Confirm Password" Required>
                     </div>
                   <div class="mt-3">
                     <button class="btn btn-block btn-gradient-dark btn-lg font-weight-medium auth-form-btn" type="submit"><a href="/login/user" style="text-decoration: none; float:right">SIGN UP</a></button>

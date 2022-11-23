@@ -21,6 +21,24 @@ class UsersController extends Controller
 
     public function register(Request $request)
     {
+        $this->validate($request, [
+            'email' => 'required|unique:users,email',
+            'pw' => 'required|min:6',
+            'conpw' => 'required|same:pw',
+            'fname' => 'required|min:2'
+        ], [],
+        [
+            'pw' => "Password",
+            "conpw" => "Confirm Password",
+            'fname' => "First Name",
+            'lname' => "Last Name",
+        ]);
+        $this->validate($request, [
+            'email' => 'required|unique:users,email',
+            'pw' => 'required|min:6',
+            'conpw' => 'required|same:pw'
+        ]);
+
 
         $user = new User;
         $user->first_name = $request->input('fname');

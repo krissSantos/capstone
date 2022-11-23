@@ -20,12 +20,12 @@
               <div class="col-lg-6 mb-4">
                 <div class="form-outline">
                   <label for="name" style="color: black">Full Name:</label>
-                  <input type="text" class="form-control" id="fname" name="fname" placeholder="Ex. Kriss D. Santos">
+                  <input type="text" class="form-control" id="fname" name="fname" placeholder="Ex. Kriss D. Santos" Required>
                 </div>
               </div>
               <div class="form-outline mb-4">
                 <label for="name" style="color: black">Address:</label>
-                <input type="address" class="form-control" id="address" name="address" placeholder="Ex. Block 1 Lot 30 Brgy. Sampaloc 2. Dasmarinas city, Cavite">
+                <input type="address" class="form-control" id="address" name="address" placeholder="Ex. Block 1 Lot 30 Brgy. Sampaloc 2. Dasmarinas city, Cavite" Required>
               </div>
               <div class="col-md-4">
                 <div class="form-outline mb-4">
@@ -36,11 +36,11 @@
 
               <div class="form-outline mb-4">
                 <label for="name" style="color: black">Mobile Number:</label>
-                <input type="number" class="form-control" id="number" placeholder="Ex. 0916-XXXX-XXX" name="mobile">
+                <input type="number" class="form-control" id="number" placeholder="Ex. 0916-XXXX-XXX" name="mobile" Required>
               </div>
               <div class="form-outline mb-4">
                 <label for="name" style="color: black">Email:</label>
-                <input type="email" class="form-control" id="email" placeholder="Ex. kriss.santos@yahoo.com" name="email">
+                <input type="email" class="form-control" id="email" placeholder="Ex. kriss.santos@yahoo.com" name="email" Required>
               </div>
             </div>
           </div>
@@ -68,12 +68,12 @@
               </div>
               <div class="form-outline mb-4">
                 <label for="name" style="color: black;">Cardholder Name:</label>
-                <input type="text" class="form-control" id="name" name="cname" placeholder="Ex. Kriss D. Santos">
+                <input type="text" class="form-control" id="name" name="cname" placeholder="Ex. Kriss D. Santos" Required>
               </div>
               <div class="col-md-4">
                 <div class="form-outline mb-4">
                   <label class="form-label" for="form3Example3">Credit card Number:</label>
-                  <input type="number" id="form3Example3" class="form-control" placeholder="Ex. 1111-222-3333" name="cnumber" />
+                  <input type="number" id="form3Example3" class="form-control" placeholder="Ex. 1111-222-3333" name="cnumber" Required />
                 </div>
               </div>
               <div>

@@ -16,8 +16,13 @@ class ContactController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $feedbacks = DB::select("SELECT * FROM customers_feedback");
+    {   $feedbacks = DB::select("SELECT * FROM customers_feedback");
+        if(Session::get('id')){
+        $orders = DB::select("SELECT * FROM orders AS o INNER JOIN order_products AS op ON o.order_ID = op.order_ID INNER JOIN products as p ON op.product_ID = p.product_ID INNER JOIN products_photos AS pp ON p.product_ID = pp.product_ID WHERE o.status != 'completed' AND o.customer_ID = "  . Session::get('id'));
+
+        $totals = DB::select("SELECT SUM(op.price) AS total FROM orders AS o INNER JOIN order_products AS op ON o.order_ID = op.order_ID INNER JOIN products as p ON op.product_ID = p.product_ID WHERE o.status != 'completed' AND o.customer_ID = ". Session::get('id'));
+        return view('contact', compact('feedbacks','orders', 'totals'));  
+        }
 
         return view('contact', compact('feedbacks'));  
     }

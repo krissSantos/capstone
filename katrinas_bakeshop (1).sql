@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2022 at 07:45 AM
+-- Generation Time: Nov 23, 2022 at 02:48 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -20,6 +20,27 @@ SET time_zone = "+00:00";
 --
 -- Database: `katrinas_bakeshop`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customers_feedback`
+--
+
+CREATE TABLE `customers_feedback` (
+  `full_name` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `subject` enum('Comment/Suggestion','Followup','Complain') NOT NULL DEFAULT 'Comment/Suggestion',
+  `message` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `customers_feedback`
+--
+
+INSERT INTO `customers_feedback` (`full_name`, `email`, `subject`, `message`) VALUES
+('kriss', 'asdasd@yahoo.com', 'Comment/Suggestion', 'asdasd'),
+('kriss', 'asdasd@yahoo.com', 'Followup', '21312l3j lk;12jel;k ashjd;ilkahs d 12 e412e564564dqw40 40 0da50sd40 A0S5 D04AS D04A0S46 A0S46 0A4S6 40AS6D 04AS40D 6A40SD 04021 0D104 D0D0AS5D 0A5SD0 5A0SD 5A5SD0\r\n AS50\r\nD 45ASD AS40 D40AS5D 4A5SD45AS45DAS456\r\nD');
 
 -- --------------------------------------------------------
 
@@ -72,18 +93,18 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`product_ID`, `product_name`, `price`, `stock`) VALUES
-(1, 'Blueberry Cheesecake', 1499, 7),
-(2, 'Redvelvet Cake', 1299, 10),
+(1, 'Blueberry Cheesecake', 1499, 10),
+(2, 'Redvelvet Cake', 1299, 8),
 (3, 'Strawberry Shortcake', 1699, 10),
-(4, 'Mocha Cake', 1399, 5),
+(4, 'Mocha Cake', 1399, 10),
 (5, 'Triple chocolate Cake', 1199, 10),
 (6, 'Sans Rival', 1999, 10),
 (7, 'Carrot Cake', 999, 10),
-(8, 'Brazo De Mercedes', 699, 7),
-(9, 'Ube Macapuno Cake', 1899, 8),
+(8, 'Brazo De Mercedes', 699, 10),
+(9, 'Ube Macapuno Cake', 1899, 10),
 (10, 'Filled Croissant', 30, 10),
-(11, 'Macarons', 50, 7),
-(12, 'Glazed Donuts', 30, 8),
+(11, 'Macarons', 50, 10),
+(12, 'Glazed Donuts', 30, 10),
 (13, 'Baguette', 90, 10),
 (14, 'Premium Muffins', 65, 10),
 (15, 'Assorted Cupcakes', 30, 10);
@@ -119,7 +140,9 @@ INSERT INTO `products_photos` (`product_ID`, `image`) VALUES
 (13, '202211161518bread.jpg'),
 (14, '202211161519p13_chocolate chip_muffins.webp'),
 (15, '202211161519p13 cupcake.jpg'),
-(16, '202211210219gitbash.png');
+(16, '202211210219gitbash.png'),
+(20, '202211211125gitbash.png'),
+(21, '202211230134mastercard.png');
 
 -- --------------------------------------------------------
 
@@ -173,9 +196,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`customer_ID`, `first_name`, `last_name`, `email`, `password`, `role`) VALUES
-(3, 'admin', 'admin', 'admin@gmail.com', '$2y$10$RWJwg6pTsBjJahCjaBeGYOXcclAr91h4vrarHfgBLd78szYHn11Ky', 'admin'),
-(10, 'kriss', 'santos', 'asdasd@yahoo.com', '$2y$10$r/fiCGNfddqVtHkBtvq66ummo.0K3/OhESNMxPmb1HU8UIXGbCQCm', 'user'),
-(11, 'Patricia', 'santos', 'patricia@gmail.com', '$2y$10$jsamj2TXWNCCGOb9Nlbhiu/0CoAFKCMK0nMXHvlXwn3Tooi65YYJe', 'user');
+(3, 'admin', 'admin', 'admin@gmail.com', '$2y$10$RWJwg6pTsBjJahCjaBeGYOXcclAr91h4vrarHfgBLd78szYHn11Ky', 'admin');
 
 --
 -- Indexes for dumped tables
@@ -214,25 +235,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `order_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `order_products`
 --
 ALTER TABLE `order_products`
-  MODIFY `op_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `op_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `product_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `customer_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `customer_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

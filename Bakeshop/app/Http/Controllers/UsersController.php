@@ -10,7 +10,7 @@ use DB;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use Session;
-use App\Http\Controllers\Student;
+
 
 class UsersController extends Controller
 {
@@ -21,6 +21,7 @@ class UsersController extends Controller
 
     public function register(Request $request)
     {
+
         $user = new User;
         $user->first_name = $request->input('fname');
         $user->last_name = $request->input('lname');
@@ -29,7 +30,7 @@ class UsersController extends Controller
         $user->role = "user";
         $user->save();
 
-        return redirect("/");
+        return redirect("/login/user");
     }
 
     public function showLogin(){
@@ -40,21 +41,25 @@ class UsersController extends Controller
         $user = User::where("email", "=", $request->email)->first();
         if ($user){
             if (Hash::check($request->pw, $user -> password)){
+                if ($user -> role == "user"){
                 $request->session()->put('id', $user -> customer_ID);
                 $request->session()->put('email', $user -> email);
                 $request->session()->put('role', $user -> role);
                 $request->session()->put('first_name', $user -> first_name);
                 $request->session()->put('last_name', $user -> last_name);
 
-                return redirect('/menu');
+                return redirect('/');
             }else{
-                return "Wrong password!";
+                return redirect("/login/user")->with('fail', 'Not an user account!');
             }
         }else{
-            return "No registered email!";
+            return redirect("/login/user")->with('fail', 'Incorrect password!');
         }
+        }else{
+        return redirect("/login/user")->with('fail', 'No account is registered to the email!');
     }
 
+}
     public function showProfile(){
         if (Session::get("id")){
             return view('profile');

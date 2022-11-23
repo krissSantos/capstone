@@ -10,6 +10,8 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\BakeshopController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,10 +23,8 @@ use App\Http\Controllers\ContactController;
 |
 */
 
-Route::get('/', function () {
-    return view('homepage');
-});
 
+Route::get('/',[HomeController::class, 'showHome']);
 
 Route::get('/OurMenu', function () {
     return view('clientmenu');
@@ -34,6 +34,7 @@ Route::get('/OurMenu', function () {
 Route::get('/complete', function () {
     return view('orderscomplete');
 });
+Route::get('/bakeshop', [BakeshopController::class, 'showHome']);
 
 Route::resource('/contact', ContactController::class);
 Route::get('/login/admin',[AdminController::class,'showLogin']);
@@ -51,7 +52,6 @@ Route::get('/login/user',[UsersController::class,'showLogin']);
 Route::get('/menu', [MenuController::class, 'showMenu']);
 Route::post('/menu', [MenuController::class, 'showCart']);
 Route::post('/menu/checkout', [MenuController::class, 'checkout']);
-Route::get('/menu/mycart', [MenuController::class, 'showMyOrders']);
 
 Route::get('/process_orders', [RecentOrdersController:: class, 'create']);
 Route::post('/process_orders', [RecentOrdersController:: class, 'updateOrders']);

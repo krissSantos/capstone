@@ -94,8 +94,16 @@ h1 {
               </div>
           </div>
         </div> 
-        <div class="col-lg-2 pt-2 col-0"></div>
+        <div class="col-lg-2 pt-2 col-0">
+        </div>
     </div>
+</div>
+<div class="container" style="margin-top: 100px; padding-left: 450px;">
+  <div class="row">
+    <div class="col-lg-12">
+      <a href="/"><button style="font-size: xx-large; background-color:lightgray; border: none; width: 50%;text-align: center">Back to Home</button></a>
+    </div>
+  </div>
 </div>
 </body>
 </html>

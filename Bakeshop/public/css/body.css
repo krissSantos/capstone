@@ -17,7 +17,7 @@ body {
 p.first { 
   background: hsl(0, 0%, 83%, 0.2);
 }
-.active, .btn:hover {
+.online , .btn:hover {
   background-color: lightslategray;
   color: white;
   border-radius: 5px;

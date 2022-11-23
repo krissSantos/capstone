@@ -33,10 +33,10 @@
             <h1 class="pb-2 pt-5">Katrina's Bakeshop</h1>
             <p style="font-weight: normal; text-indent: 50px;" class="first">A home-based bakeshop located in Cavite. We specialize in homemade cakes perfect for your special occasion. We also offer different bread and pastries that will surely satisfy your sweet cravings.</p>
         </div>
-        <div class="col-lg-3">
+        <div class="col-lg-3 mt-3">
             <img src="images/p7_macaroon.jpg" style="width: 100%;"  class="img-thumbnail">
         </div>
-        <div class="col-lg-3">
+        <div class="col-lg-3 mt-3">
             <img src="images/p14_ube_macapuno.jpg" style="width: 100%; height: 230px" class="img-thumbnail" >
         </div>
     </div>
@@ -56,7 +56,7 @@
 
   <!-- //History -->
 
-  <div class="container" style="background-color: hsl(0, 0%, 83%, 0.2);">
+  <div class="container mt-3" style="background-color: hsl(0, 0%, 83%, 0.2);">
     <div class="row">
       <div class="col-lg-6">
         <h1>Cakes</h1>

@@ -54,7 +54,7 @@
                     <input type="password" name="conpw" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Confirm Password">
                     </div>
                   <div class="mt-3">
-                    <button class="btn btn-block btn-gradient-dark btn-lg font-weight-medium auth-form-btn" type="submit">SIGN UP</button>
+                    <button class="btn btn-block btn-gradient-dark btn-lg font-weight-medium auth-form-btn" type="submit"><a href="/login/user" style="text-decoration: none; float:right">SIGN UP</a></button>
                   </div>
                 </form>
               </div>

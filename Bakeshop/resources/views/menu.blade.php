@@ -41,13 +41,13 @@
         </ul>
         <form class="d-flex">
         @if(Session::get('id'))
-        <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn" type="submit" style="background-color:lightslategray; margin-right: 20px"><a href="/logout" style="text-decoration: none; color: black">Logout</a></button>
+        <button data-bs-toggle="modal" data-bs-target="#exampleModal1" class="btn" type="submit" style="background-color:lightslategray; margin-right: 20px"><a href="/logout" style="text-decoration: none; color: black">Logout</a></button>
         @else
           <button class="btn" type="submit" style="background-color:lightslategray; margin-right: 20px; "><a href="/login/user" style="text-decoration: none; color: black">Login</a></button>
           @endif
           <button class="btn" type="submit" style="background-color:lightslategray"><a href="/register" style="text-decoration: none; color: black">Register</a></button>
         </form>
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                   <div class="modal-content">
                   <div class="modal-header">

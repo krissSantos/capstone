@@ -40,7 +40,7 @@ class CartController extends Controller
     
     public function store(Request $request)
     {
-       $ops = DB::select("SELECT o.order_ID, op.product_ID, quantity FROM orders AS o LEFT JOIN order_products as op ON o.order_ID = op.order_ID LEFT JOIN `products` AS p ON op.product_ID = p.product_ID;");
+       $ops = DB::select("SELECT o.order_ID, op.product_ID, quantity FROM orders AS o LEFT JOIN order_products as op ON o.order_ID = op.order_ID LEFT JOIN products AS p ON op.product_ID = p.product_ID;");
         $ops = new OrderProduct;
         $ops->order_ID= $ops->order_ID;
         $ops->product_ID = $request->input('product');

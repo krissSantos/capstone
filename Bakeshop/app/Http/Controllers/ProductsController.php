@@ -41,7 +41,7 @@ class ProductsController extends Controller
     {
         if (Session::get("role") == "admin"){
         $products = DB::select("SELECT p.product_ID, product_name, price, stock, image FROM products AS p LEFT JOIN products_photos AS pp ON p.product_ID = pp.product_ID");
-        $stocks = DB::select("SELECT SUM(stock - quantity) AS sq FROM `order_products` AS op INNER JOIN products AS p ON op.product_ID = p.product_ID GROUP BY p.product_ID");
+        $stocks = DB::select("SELECT SUM(stock - quantity) AS sq FROM order_products AS op INNER JOIN products AS p ON op.product_ID = p.product_ID GROUP BY p.product_ID");
         return view('/products', compact('products', 'stocks'));
     }else{
         return "No permission!";
